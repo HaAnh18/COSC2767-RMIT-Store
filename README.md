@@ -649,4 +649,3 @@ The `client/` and `server/` directories are isolated, promoting independent deve
 
 ## 🏆 Author
 - Tom Huynh - tomhuynhsg@gmail.com
-
