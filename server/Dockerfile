@@ -8,7 +8,8 @@ RUN npm install
 
 COPY . .
 
-ENV MONGO_URI=mongodb://host.docker.internal:27017/rmit_ecommerce
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 EXPOSE 3000
 

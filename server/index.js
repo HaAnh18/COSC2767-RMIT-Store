@@ -47,7 +47,7 @@ app.use(routes);
 const server = app.listen(port, '0.0.0.0', () => {
   console.log(
     `${chalk.green('✓')} ${chalk.blue(
-      `Listening on port ${port}. Visit http://localhost:${port}/ in your browser.`
+      `Listening on port ${port}. Visit http://0.0.0.0:${port}/ in your browser.`
     )}`
   );
 });
