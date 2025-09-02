@@ -1,27 +1,27 @@
 // Load environment variables from a .env file into process.env
-require('dotenv').config();
+require('dotenv').config()
 
 // Import required modules
-const express = require('express');
-const chalk = require('chalk');
-const cors = require('cors');
-const helmet = require('helmet');
+const express = require('express')
+const chalk = require('chalk')
+const cors = require('cors')
+const helmet = require('helmet')
 
 // Import custom modules
-const keys = require('./config/keys');
-const routes = require('./routes');
-const socket = require('./socket');
-const setupDB = require('./utils/db');
+const keys = require('./config/keys')
+const routes = require('./routes')
+const socket = require('./socket')
+const setupDB = require('./utils/db')
 
 // Destructure port from keys configuration
-const { port } = keys;
+const { port } = keys
 
 // Initialize the Express application
-const app = express();
+const app = express()
 
 // Middleware to parse URL-encoded data and JSON data
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 // Middleware to enhance security by setting various HTTP headers
 app.use(
@@ -29,19 +29,19 @@ app.use(
     contentSecurityPolicy: false, // Disable CSP for compatibility reasons
     frameguard: true // Enable frameguard to prevent clickjacking
   })
-);
+)
 
 // Middleware to enable Cross-Origin Resource Sharing
-app.use(cors());
+app.use(cors())
 
 // Setup the database connection
-setupDB();
+setupDB()
 
 // Configure Passport.js for authentication
-require('./config/passport')(app);
+require('./config/passport')(app)
 
 // Use the defined routes for handling requests
-app.use(routes);
+app.use(routes)
 
 // Start the server and listen on the specified port
 const server = app.listen(port, '0.0.0.0', () => {
@@ -49,8 +49,8 @@ const server = app.listen(port, '0.0.0.0', () => {
     `${chalk.green('✓')} ${chalk.blue(
       `Listening on port ${port}. Visit http://0.0.0.0:${port}/ in your browser.`
     )}`
-  );
-});
+  )
+})
 
 // Initialize WebSocket server
 socket(server);
