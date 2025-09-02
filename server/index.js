@@ -53,4 +53,4 @@ const server = app.listen(port, '0.0.0.0', () => {
 })
 
 // Initialize WebSocket server
-socket(server);
+socket(server)
