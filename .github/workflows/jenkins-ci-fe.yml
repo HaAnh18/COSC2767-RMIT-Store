@@ -4,8 +4,7 @@ on:
   pull_request:
     branches:
       - jenkins
-    # paths:
-    #   - 'client/**'
+    types: [opened, synchronize, reopened]
 
 jobs:
   trigger-jenkins:
