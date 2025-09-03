@@ -13,8 +13,19 @@ jobs:
   trigger-jenkins:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Jenkins Job
-        run: |
-            curl -X POST "http://${{ secrets.JENKINS_IP }}:8080/job/RMIT_Store/build" \
-            --user "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}"
-       
+        - name: Print PR Info (debug)
+            run: |
+              echo "🔍 GitHub Event: ${{ github.event_name }}"
+              echo "👤 PR Author: ${{ github.actor }}"
+              echo "🔁 Source branch: ${{ github.head_ref }}"
+              echo "🎯 Target branch: ${{ github.base_ref }}"
+              echo "🔗 PR URL: ${{ github.event.pull_request.html_url }}"
+              
+        - name: Trigger Jenkins Job
+          run: |
+            curl -X POST "http://${{ secrets.JENKINS_IP }}:8080/job/RMIT_Store/buildWithParameters" \
+            --user "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}" \
+            --data-urlencode "BRANCH_NAME=${{ github.head_ref }}"
+    
+        - name: Confirm Request Sent
+            run: echo "✅ Jenkins trigger request sent successfully (if credentials and token are correct)."
