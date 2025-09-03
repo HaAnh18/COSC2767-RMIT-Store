@@ -1,0 +1,18 @@
+name: Jenkins CI PR FE 
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'client/**'
+
+jobs:
+  trigger-jenkins:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Jenkins Job
+        run: |
+            curl -X POST "http://${{ secrets.JENKINS_IP }}:8080/job/RMIT_Store/build" \
+            --user "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}"
+       
