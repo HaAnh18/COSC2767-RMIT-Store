@@ -3,7 +3,7 @@ name: Jenkins CI PR FE
 on:
   pull_request:
     branches:
-      - jenkins
+      - main
     types: 
         - opened
         - synchronize
