@@ -1,13 +1,6 @@
 name: Jenkins CI PR FE 
 
-on:
-  pull_request:
-    branches:
-      - main
-    types: 
-        - opened
-        - synchronize
-        - reopened
+on: [pull_request]
 
 jobs:
   trigger-jenkins:
