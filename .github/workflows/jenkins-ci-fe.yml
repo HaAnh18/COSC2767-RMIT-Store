@@ -4,8 +4,8 @@ on:
   pull_request:
     branches:
       - jenkins
-    paths:
-      - 'client/**'
+    # paths:
+    #   - 'client/**'
 
 jobs:
   trigger-jenkins:
