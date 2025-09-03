@@ -4,7 +4,10 @@ on:
   pull_request:
     branches:
       - jenkins
-    types: [opened, synchronize, reopened]
+    types: 
+        - opened
+        - synchronize
+        - reopened
 
 jobs:
   trigger-jenkins:
