@@ -42,6 +42,10 @@ jobs:
           url: http://localhost:8081
           timeout: 30
 
+      - name: Install Cypress and dependencies
+        run: npm install
+        working-directory: client
+
       - name: Run Cypress tests
         run: |
           cd client
