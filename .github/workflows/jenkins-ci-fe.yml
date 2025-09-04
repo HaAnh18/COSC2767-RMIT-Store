@@ -24,14 +24,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build Docker image
-        run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/e2e:latest -f ./client/Dockerfile.e2e ./client
-
-      - name: Push Docker image to Docker Hub
-        run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/e2e:latest
               
       - name: Trigger Jenkins Job
         run: |
@@ -50,6 +42,11 @@ jobs:
           url: http://localhost:8081
           timeout: 30
 
+      - name: Install Cypress and dependencies
+        run: npm install
+        working-directory: client
+
       - name: Run Cypress tests
         run: |
+          cd client
           npx cypress run
