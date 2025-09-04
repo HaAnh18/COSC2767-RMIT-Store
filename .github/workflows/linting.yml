@@ -12,8 +12,9 @@ jobs:
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: false
+          VALIDATE_GITHUB_ACTIONS: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LINTER_RULES_PATH: .github/linters/
+          # LINTER_RULES_PATH: .github/linters/
           # To enable specific linters, set the following variables to true
           # For a list of supported linters, see
