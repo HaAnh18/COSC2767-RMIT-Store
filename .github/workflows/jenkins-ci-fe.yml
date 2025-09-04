@@ -38,4 +38,18 @@ jobs:
           curl -X POST "http://${{ secrets.JENKINS_IP }}:8080/job/RMIT_Store/buildWithParameters" \
           --user "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}" \
           --data-urlencode "BRANCH_NAME=${{ github.head_ref }}"
-    
+
+      - name: Run the application
+        run: |
+          cd client
+          docker compose up -d --build
+
+      - name: Wait for app to start
+        uses: jakejarvis/wait-action@v0.1.1
+        with:
+          url: http://localhost:8081
+          timeout: 30
+
+      - name: Run Cypress tests
+        run: |
+          npx cypress run
