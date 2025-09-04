@@ -24,6 +24,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/e2e:latest -f ./client/Dockerfile.e2e ./client
+
+      - name: Push Docker image to Docker Hub
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/e2e:latest
               
       - name: Trigger Jenkins Job
         run: |
@@ -31,22 +39,3 @@ jobs:
           --user "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}" \
           --data-urlencode "BRANCH_NAME=${{ github.head_ref }}"
     
-      - name: Run the application
-        run: |
-          cd client
-          docker compose up -d --build
-
-      - name: Wait for app to start
-        uses: jakejarvis/wait-action@v0.1.1
-        with:
-          url: http://localhost:8081
-          timeout: 30
-
-      - name: Install Cypress and dependencies
-        run: npm install
-        working-directory: client
-
-      - name: Run Cypress tests
-        run: |
-          cd client
-          npx cypress run
