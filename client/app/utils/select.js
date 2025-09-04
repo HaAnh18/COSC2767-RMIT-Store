@@ -5,40 +5,40 @@
  */
 
 export const formatSelectOptions = (data, empty = false, from) => {
-  const newSelectOptions = []
+  let newSelectOptions = [];
 
   if (data && data.length > 0) {
     data.map(option => {
-      const newOption = {}
-      newOption.value = option._id
-      newOption.label = option.name
-      newSelectOptions.push(newOption)
-    })
+      let newOption = {};
+      newOption.value = option._id;
+      newOption.label = option.name;
+      newSelectOptions.push(newOption);
+    });
   }
 
   if (empty) {
     const emptyOption = {
       value: 0,
       label: 'No option selected'
-    }
-    newSelectOptions.unshift(emptyOption)
+    };
+    newSelectOptions.unshift(emptyOption);
   }
 
-  return newSelectOptions
-}
+  return newSelectOptions;
+};
 
 export const unformatSelectOptions = data => {
-  if (!data) return null
+  if (!data) return null;
 
-  const newSelectOptions = []
+  let newSelectOptions = [];
 
   if (data && data.length > 0) {
     data.map(option => {
-      const newOption = {}
-      newOption._id = option.value
-      newSelectOptions.push(newOption._id)
-    })
+      let newOption = {};
+      newOption._id = option.value;
+      newSelectOptions.push(newOption._id);
+    });
   }
 
-  return newSelectOptions
-}
+  return newSelectOptions;
+};

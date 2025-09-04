@@ -4,9 +4,9 @@
  *
  */
 
-import { success } from 'react-notification-system-redux'
-import axios from 'axios'
-import DOMPurify from 'dompurify'
+import { success } from 'react-notification-system-redux';
+import axios from 'axios';
+import DOMPurify from 'dompurify';
 
 import {
   FETCH_REVIEWS,
@@ -18,105 +18,105 @@ import {
   RESET_REVIEW,
   SET_REVIEW_FORM_ERRORS,
   SET_ADVANCED_FILTERS
-} from './constants'
-import handleError from '../../utils/error'
-import { allFieldsValidation, santizeFields } from '../../utils/validation'
-import { API_URL } from '../../constants'
+} from './constants';
+import handleError from '../../utils/error';
+import { allFieldsValidation, santizeFields } from '../../utils/validation';
+import { API_URL } from '../../constants';
 
 export const reviewChange = (name, value) => {
-  const formData = {}
-  formData[name] = value
+  let formData = {};
+  formData[name] = value;
   return {
     type: REVIEW_CHANGE,
     payload: formData
-  }
-}
+  };
+};
 
 // fetch reviews api
 export const fetchReviews = (n, v) => {
   return async (dispatch, getState) => {
     try {
-      dispatch({ type: SET_REVIEWS_LOADING, payload: true })
+      dispatch({ type: SET_REVIEWS_LOADING, payload: true });
 
       const response = await axios.get(`${API_URL}/review`, {
         params: {
           page: v ?? 1,
           limit: 20
         }
-      })
+      });
 
-      const { reviews, totalPages, currentPage, count } = response.data
+      const { reviews, totalPages, currentPage, count } = response.data;
 
-      dispatch({ type: FETCH_REVIEWS, payload: reviews })
+      dispatch({ type: FETCH_REVIEWS, payload: reviews });
       dispatch({
         type: SET_ADVANCED_FILTERS,
         payload: { totalPages, currentPage, count }
-      })
+      });
     } catch (error) {
-      handleError(error, dispatch)
+      handleError(error, dispatch);
     } finally {
-      dispatch({ type: SET_REVIEWS_LOADING, payload: false })
+      dispatch({ type: SET_REVIEWS_LOADING, payload: false });
     }
-  }
-}
+  };
+};
 
 export const approveReview = review => {
   return async (dispatch, getState) => {
     try {
-      await axios.put(`${API_URL}/review/approve/${review._id}`)
+      await axios.put(`${API_URL}/review/approve/${review._id}`);
 
-      dispatch(fetchReviews())
+      dispatch(fetchReviews());
     } catch (error) {
-      handleError(error, dispatch)
+      handleError(error, dispatch);
     }
-  }
-}
+  };
+};
 
 export const rejectReview = review => {
   return async (dispatch, getState) => {
     try {
-      await axios.put(`${API_URL}/review/reject/${review._id}`)
+      await axios.put(`${API_URL}/review/reject/${review._id}`);
 
-      dispatch(fetchReviews())
+      dispatch(fetchReviews());
     } catch (error) {
-      handleError(error, dispatch)
+      handleError(error, dispatch);
     }
-  }
-}
+  };
+};
 
 // delete review api
 export const deleteReview = id => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.delete(`${API_URL}/review/delete/${id}`)
+      const response = await axios.delete(`${API_URL}/review/delete/${id}`);
 
       const successfulOptions = {
         title: `${response.data.message}`,
         position: 'tr',
         autoDismiss: 1
-      }
+      };
 
       if (response.data.success == true) {
-        dispatch(success(successfulOptions))
+        dispatch(success(successfulOptions));
         dispatch({
           type: REMOVE_REVIEW,
           payload: id
-        })
+        });
       }
     } catch (error) {
-      handleError(error, dispatch)
+      handleError(error, dispatch);
     }
-  }
-}
+  };
+};
 
 // fetch product reviews api
 export const fetchProductReviews = slug => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.get(`${API_URL}/review/${slug}`)
+      const response = await axios.get(`${API_URL}/review/${slug}`);
 
       const { ratingSummary, totalRatings, totalReviews, totalSummary } =
-        getProductReviewsSummary(response.data.reviews)
+        getProductReviewsSummary(response.data.reviews);
 
       dispatch({
         type: FETCH_PRODUCT_REVIEWS,
@@ -129,12 +129,12 @@ export const fetchProductReviews = slug => {
             totalSummary
           }
         }
-      })
+      });
     } catch (error) {
-      handleError(error, dispatch)
+      handleError(error, dispatch);
     }
-  }
-}
+  };
+};
 
 export const addProductReview = () => {
   return async (dispatch, getState) => {
@@ -144,10 +144,10 @@ export const addProductReview = () => {
         review: 'required',
         rating: 'required|numeric|min:1',
         isRecommended: 'required'
-      }
+      };
 
-      const review = getState().review.reviewFormData
-      const product = getState().product.storeProduct
+      const review = getState().review.reviewFormData;
+      const product = getState().product.storeProduct;
 
       const newReview = {
         product: product._id,
@@ -155,7 +155,7 @@ export const addProductReview = () => {
         rating: review.rating,
         review: review.review,
         title: review.title
-      }
+      };
 
       const { isValid, errors } = allFieldsValidation(newReview, rules, {
         'required.title': 'Title is required.',
@@ -163,83 +163,83 @@ export const addProductReview = () => {
         'required.rating': 'Rating is required.',
         'min.rating': 'Rating is required.',
         'required.isRecommended': 'Recommendable is required.'
-      })
+      });
 
       if (!isValid) {
-        return dispatch({ type: SET_REVIEW_FORM_ERRORS, payload: errors })
+        return dispatch({ type: SET_REVIEW_FORM_ERRORS, payload: errors });
       }
 
-      const santizedReview = santizeFields(newReview)
+      const santizedReview = santizeFields(newReview);
 
       const response = await axios.post(`${API_URL}/review/add`, {
         ...santizedReview,
         isRecommended: review.isRecommended.value
-      })
+      });
 
       const successfulOptions = {
         title: `${response.data.message}`,
         position: 'tr',
         autoDismiss: 1
-      }
+      };
 
       if (response.data.success === true) {
-        dispatch(success(successfulOptions))
-        dispatch(fetchProductReviews(product.slug))
+        dispatch(success(successfulOptions));
+        dispatch(fetchProductReviews(product.slug));
 
         // dispatch({
         //   type: ADD_REVIEW,
         //   payload: response.data.review
         // });
-        dispatch({ type: RESET_REVIEW })
+        dispatch({ type: RESET_REVIEW });
       }
     } catch (error) {
-      handleError(error, dispatch)
+      handleError(error, dispatch);
     }
-  }
-}
+  };
+};
 
 export const getProductReviewsSummary = reviews => {
-  const ratingSummary = [{ 5: 0 }, { 4: 0 }, { 3: 0 }, { 2: 0 }, { 1: 0 }]
-  let totalRatings = 0
-  let totalReviews = 0
-  let totalSummary = 0
+  let ratingSummary = [{ 5: 0 }, { 4: 0 }, { 3: 0 }, { 2: 0 }, { 1: 0 }];
+  let totalRatings = 0;
+  let totalReviews = 0;
+  let totalSummary = 0;
 
   if (reviews.length > 0) {
     reviews.map((item, i) => {
-      totalRatings += item.rating
-      totalReviews += 1
+      totalRatings += item.rating;
+      totalReviews += 1;
 
       switch (Math.round(item.rating)) {
         case 5:
-          ratingSummary[0][5] += 1
-          totalSummary += 1
-          break
+          ratingSummary[0][5] += 1;
+          totalSummary += 1;
+          break;
         case 4:
-          ratingSummary[1][4] += 1
-          totalSummary += 1
+          ratingSummary[1][4] += 1;
+          totalSummary += 1;
 
-          break
+          break;
         case 3:
-          ratingSummary[2][3] += 1
-          totalSummary += 1
+          ratingSummary[2][3] += 1;
+          totalSummary += 1;
 
-          break
+          break;
         case 2:
-          ratingSummary[3][2] += 1
-          totalSummary += 1
+          ratingSummary[3][2] += 1;
+          totalSummary += 1;
 
-          break
+          break;
         case 1:
-          ratingSummary[4][1] += 1
-          totalSummary += 1
+          ratingSummary[4][1] += 1;
+          totalSummary += 1;
 
-          break
+          break;
         default:
-          0
-          break
+          0;
+          break;
       }
-    })
+    });
   }
 
-  return { ratingSummary, totalRatings, totalReviews, totalSummary }
-}
+  return { ratingSummary, totalRatings, totalReviews, totalSummary };
+};

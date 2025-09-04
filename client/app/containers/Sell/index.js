@@ -4,18 +4,18 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { connect } from 'react-redux'
-import { Row, Col } from 'reactstrap'
+import { connect } from 'react-redux';
+import { Row, Col } from 'reactstrap';
 
-import actions from '../../actions'
+import actions from '../../actions';
 
-import LoadingIndicator from '../../components/Common/LoadingIndicator'
-import AddMerchant from '../../components/Manager/AddMerchant'
+import LoadingIndicator from '../../components/Common/LoadingIndicator';
+import AddMerchant from '../../components/Manager/AddMerchant';
 
 class Sell extends React.PureComponent {
-  render () {
+  render() {
     const {
       merchantFormData,
       formErrors,
@@ -23,7 +23,7 @@ class Sell extends React.PureComponent {
       addMerchant,
       isSubmitting,
       isLoading
-    } = this.props
+    } = this.props;
 
     return (
       <div className='sell'>
@@ -57,7 +57,7 @@ class Sell extends React.PureComponent {
               >
                 <img
                   className='agreement-banner'
-                  src='/images/banners/agreement.svg'
+                  src={'/images/banners/agreement.svg'}
                   alt='agreement banner'
                 />
               </Col>
@@ -65,7 +65,7 @@ class Sell extends React.PureComponent {
           </Col>
         </Row>
       </div>
-    )
+    );
   }
 }
 
@@ -75,7 +75,7 @@ const mapStateToProps = state => {
     formErrors: state.merchant.formErrors,
     isSubmitting: state.merchant.isSubmitting,
     isLoading: state.merchant.isLoading
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, actions)(Sell)
+export default connect(mapStateToProps, actions)(Sell);

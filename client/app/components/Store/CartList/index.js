@@ -4,19 +4,19 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Link } from 'react-router-dom'
-import { Container, Row, Col } from 'reactstrap'
+import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
 
-import Button from '../../Common/Button'
+import Button from '../../Common/Button';
 
 const CartList = props => {
-  const { cartItems, handleRemoveFromCart } = props
+  const { cartItems, handleRemoveFromCart } = props;
 
   const handleProductClick = () => {
-    props.toggleCart()
-  }
+    props.toggleCart();
+  };
 
   return (
     <div className='cart-list'>
@@ -78,7 +78,7 @@ const CartList = props => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default CartList
+export default CartList;

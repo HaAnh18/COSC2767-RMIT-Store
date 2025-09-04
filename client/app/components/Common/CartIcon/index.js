@@ -4,13 +4,13 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { BagIcon } from '../Icon'
-import Button from '../Button'
+import { BagIcon } from '../Icon';
+import Button from '../Button';
 
 const CartIcon = props => {
-  const { className, onClick, cartItems } = props
+  const { className, onClick, cartItems } = props;
 
   const Icon = (
     <span className='cart-icon'>
@@ -21,9 +21,9 @@ const CartIcon = props => {
         </span>
       )}
     </span>
-  )
+  );
 
-  const items = cartItems.length
+  const items = cartItems.length;
 
   return (
     <Button
@@ -36,7 +36,7 @@ const CartIcon = props => {
       icon={Icon}
       onClick={onClick}
     />
-  )
-}
+  );
+};
 
-export default CartIcon
+export default CartIcon;

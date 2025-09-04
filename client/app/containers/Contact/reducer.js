@@ -8,7 +8,7 @@ import {
   CONTACT_FORM_CHANGE,
   SET_CONTACT_FORM_ERRORS,
   CONTACT_FORM_RESET
-} from './constants'
+} from './constants';
 
 const initialState = {
   contactFormData: {
@@ -17,7 +17,7 @@ const initialState = {
     message: ''
   },
   formErrors: {}
-}
+};
 
 const contactReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -25,12 +25,12 @@ const contactReducer = (state = initialState, action) => {
       return {
         ...state,
         contactFormData: { ...state.contactFormData, ...action.payload }
-      }
+      };
     case SET_CONTACT_FORM_ERRORS:
       return {
         ...state,
         formErrors: action.payload
-      }
+      };
     case CONTACT_FORM_RESET:
       return {
         ...state,
@@ -40,10 +40,10 @@ const contactReducer = (state = initialState, action) => {
           message: ''
         },
         formErrors: {}
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default contactReducer
+export default contactReducer;

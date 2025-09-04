@@ -4,18 +4,18 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { connect } from 'react-redux'
-import Notifications from 'react-notification-system-redux'
+import { connect } from 'react-redux';
+import Notifications from 'react-notification-system-redux';
 
-import actions from '../../actions'
+import actions from '../../actions';
 
 class Notification extends React.PureComponent {
-  componentDidMount () {}
+  componentDidMount() {}
 
-  render () {
-    const { notifications } = this.props
+  render() {
+    const { notifications } = this.props;
 
     const style = {
       NotificationItem: {
@@ -27,15 +27,15 @@ class Notification extends React.PureComponent {
           color: 'red'
         }
       }
-    }
-    return <Notifications notifications={notifications} style={style} />
+    };
+    return <Notifications notifications={notifications} style={style} />;
   }
 }
 
 const mapStateToProps = state => {
   return {
     notifications: state.notifications
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, actions)(Notification)
+export default connect(mapStateToProps, actions)(Notification);

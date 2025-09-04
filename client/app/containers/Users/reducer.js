@@ -9,7 +9,7 @@ import {
   FETCH_SEARCHED_USERS,
   SET_ADVANCED_FILTERS,
   SET_USERS_LOADING
-} from './constants'
+} from './constants';
 
 const initialState = {
   users: [],
@@ -20,7 +20,7 @@ const initialState = {
     count: 0
   },
   isLoading: false
-}
+};
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -28,12 +28,12 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.payload
-      }
+      };
     case FETCH_SEARCHED_USERS:
       return {
         ...state,
         searchedUsers: action.payload
-      }
+      };
     case SET_ADVANCED_FILTERS:
       return {
         ...state,
@@ -41,15 +41,15 @@ const usersReducer = (state = initialState, action) => {
           ...state.advancedFilters,
           ...action.payload
         }
-      }
+      };
     case SET_USERS_LOADING:
       return {
         ...state,
         isLoading: action.payload
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default usersReducer
+export default usersReducer;

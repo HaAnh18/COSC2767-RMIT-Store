@@ -4,15 +4,15 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Link } from 'react-router-dom'
-import { Row, Col } from 'reactstrap'
+import { Link } from 'react-router-dom';
+import { Row, Col } from 'reactstrap';
 
-import Input from '../../Common/Input'
-import Button from '../../Common/Button'
-import Switch from '../../Common/Switch'
-import { ROLES } from '../../../constants'
+import Input from '../../Common/Input';
+import Button from '../../Common/Button';
+import Switch from '../../Common/Switch';
+import { ROLES } from '../../../constants';
 
 const EditBrand = props => {
   const {
@@ -23,12 +23,12 @@ const EditBrand = props => {
     updateBrand,
     deleteBrand,
     activateBrand
-  } = props
+  } = props;
 
   const handleSubmit = event => {
-    event.preventDefault()
-    updateBrand()
-  }
+    event.preventDefault();
+    updateBrand();
+  };
 
   return (
     <div className='edit-brand'>
@@ -42,40 +42,40 @@ const EditBrand = props => {
         <Row>
           <Col xs='12'>
             <Input
-              type='text'
-              error={formErrors.name}
-              label='Name'
-              name='name'
-              placeholder='Brand Name'
+              type={'text'}
+              error={formErrors['name']}
+              label={'Name'}
+              name={'name'}
+              placeholder={'Brand Name'}
               value={brand.name}
               onInputChange={(name, value) => {
-                brandChange(name, value)
+                brandChange(name, value);
               }}
             />
           </Col>
           <Col xs='12'>
             <Input
-              type='text'
-              error={formErrors.slug}
-              label='Slug'
-              name='slug'
-              placeholder='Brand Slug'
+              type={'text'}
+              error={formErrors['slug']}
+              label={'Slug'}
+              name={'slug'}
+              placeholder={'Brand Slug'}
               value={brand.slug}
               onInputChange={(name, value) => {
-                brandChange(name, value)
+                brandChange(name, value);
               }}
             />
           </Col>
           <Col xs='12' md='12'>
             <Input
-              type='textarea'
-              error={formErrors.description}
-              label='Description'
-              name='description'
-              placeholder='Brand Description'
+              type={'textarea'}
+              error={formErrors['description']}
+              label={'Description'}
+              name={'description'}
+              placeholder={'Brand Description'}
               value={brand.description}
               onInputChange={(name, value) => {
-                brandChange(name, value)
+                brandChange(name, value);
               }}
             />
           </Col>
@@ -85,8 +85,8 @@ const EditBrand = props => {
               tooltip={brand.isActive}
               tooltipContent={`Disabling ${brand.name} will also disable all ${brand.name} products.`}
               id={`enable-brand-${brand._id}`}
-              name='isActive'
-              label='Active?'
+              name={'isActive'}
+              label={'Active?'}
               checked={brand.isActive}
               toggleCheckboxChange={value => activateBrand(brand._id, value)}
             />
@@ -108,7 +108,7 @@ const EditBrand = props => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default EditBrand
+export default EditBrand;

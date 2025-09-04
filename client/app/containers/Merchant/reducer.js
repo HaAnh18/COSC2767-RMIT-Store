@@ -17,7 +17,7 @@ import {
   SIGNUP_CHANGE,
   SET_SIGNUP_FORM_ERRORS,
   SIGNUP_RESET
-} from './constants'
+} from './constants';
 
 const initialState = {
   merchants: [],
@@ -44,7 +44,7 @@ const initialState = {
   signupFormErrors: {},
   isLoading: false,
   isSubmitting: false
-}
+};
 
 const merchantReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -52,21 +52,21 @@ const merchantReducer = (state = initialState, action) => {
       return {
         ...state,
         merchants: action.payload
-      }
+      };
     case FETCH_SEARCHED_MERCHANTS:
       return {
         ...state,
         searchedMerchants: action.payload
-      }
+      };
     case REMOVE_MERCHANT:
-      const index = state.merchants.findIndex(b => b._id === action.payload)
+      const index = state.merchants.findIndex(b => b._id === action.payload);
       return {
         ...state,
         merchants: [
           ...state.merchants.slice(0, index),
           ...state.merchants.slice(index + 1)
         ]
-      }
+      };
     case SET_ADVANCED_FILTERS:
       return {
         ...state,
@@ -74,7 +74,7 @@ const merchantReducer = (state = initialState, action) => {
           ...state.advancedFilters,
           ...action.payload
         }
-      }
+      };
     case MERCHANT_CHANGE:
       return {
         ...state,
@@ -82,22 +82,22 @@ const merchantReducer = (state = initialState, action) => {
           ...state.merchantFormData,
           ...action.payload
         }
-      }
+      };
     case SET_MERCHANT_FORM_ERRORS:
       return {
         ...state,
         formErrors: action.payload
-      }
+      };
     case SET_MERCHANTS_LOADING:
       return {
         ...state,
         isLoading: action.payload
-      }
+      };
     case SET_MERCHANTS_SUBMITTING:
       return {
         ...state,
         isSubmitting: action.payload
-      }
+      };
     case RESET_MERCHANT:
       return {
         ...state,
@@ -109,17 +109,17 @@ const merchantReducer = (state = initialState, action) => {
           business: ''
         },
         formErrors: {}
-      }
+      };
     case SIGNUP_CHANGE:
       return {
         ...state,
         signupFormData: { ...state.signupFormData, ...action.payload }
-      }
+      };
     case SET_SIGNUP_FORM_ERRORS:
       return {
         ...state,
         signupFormErrors: action.payload
-      }
+      };
     case SIGNUP_RESET:
       return {
         ...state,
@@ -129,11 +129,11 @@ const merchantReducer = (state = initialState, action) => {
           lastName: '',
           password: ''
         }
-      }
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default merchantReducer
+export default merchantReducer;

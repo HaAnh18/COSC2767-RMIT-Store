@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react'
-import { Row, Col } from 'reactstrap'
+import React from 'react';
+import { Row, Col } from 'reactstrap';
 
-import AddReview from './Add'
-import ReviewList from './List'
-import ReviewSummary from './Summary'
+import AddReview from './Add';
+import ReviewList from './List';
+import ReviewSummary from './Summary';
 
 const ProductReviews = props => {
   return (
@@ -31,7 +31,7 @@ const ProductReviews = props => {
         </Col>
       </Row>
     </div>
-  )
-}
+  );
+};
 
-export default ProductReviews
+export default ProductReviews;

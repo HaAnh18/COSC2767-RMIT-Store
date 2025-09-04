@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap';
 
 const CartSummary = props => {
-  const { cartTotal } = props
+  const { cartTotal } = props;
 
   return (
     <div className='cart-summary'>
@@ -32,7 +32,7 @@ const CartSummary = props => {
         </Row>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default CartSummary
+export default CartSummary;

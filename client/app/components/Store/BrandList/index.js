@@ -4,13 +4,13 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Row, Col } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const BrandList = props => {
-  const { brands } = props
+  const { brands } = props;
 
   return (
     <div className='brand-list'>
@@ -30,7 +30,7 @@ const BrandList = props => {
         ))}
       </Row>
     </div>
-  )
-}
+  );
+};
 
-export default BrandList
+export default BrandList;

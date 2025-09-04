@@ -15,7 +15,7 @@ import {
   ADD_ADDRESS,
   REMOVE_ADDRESS,
   SET_ADDRESS_LOADING
-} from './constants'
+} from './constants';
 
 const initialState = {
   addresses: [],
@@ -38,7 +38,7 @@ const initialState = {
   },
   formErrors: {},
   editFormErrors: {}
-}
+};
 
 const addressReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -46,27 +46,27 @@ const addressReducer = (state = initialState, action) => {
       return {
         ...state,
         addresses: action.payload
-      }
+      };
     case FETCH_ADDRESS:
       return {
         ...state,
         address: action.payload,
         editFormErrors: {}
-      }
+      };
     case ADD_ADDRESS:
       return {
         ...state,
         addresses: [...state.addresses, action.payload]
-      }
+      };
     case REMOVE_ADDRESS:
-      const index = state.addresses.findIndex(b => b._id === action.payload)
+      const index = state.addresses.findIndex(b => b._id === action.payload);
       return {
         ...state,
         addresses: [
           ...state.addresses.slice(0, index),
           ...state.addresses.slice(index + 1)
         ]
-      }
+      };
     case ADDRESS_CHANGE:
       return {
         ...state,
@@ -74,7 +74,7 @@ const addressReducer = (state = initialState, action) => {
           ...state.addressFormData,
           ...action.payload
         }
-      }
+      };
     case ADDRESS_EDIT_CHANGE:
       return {
         ...state,
@@ -82,17 +82,17 @@ const addressReducer = (state = initialState, action) => {
           ...state.address,
           ...action.payload
         }
-      }
+      };
     case SET_ADDRESS_FORM_ERRORS:
       return {
         ...state,
         formErrors: action.payload
-      }
+      };
     case SET_ADDRESS_FORM_EDIT_ERRORS:
       return {
         ...state,
         editFormErrors: action.payload
-      }
+      };
     case RESET_ADDRESS:
       return {
         ...state,
@@ -105,15 +105,15 @@ const addressReducer = (state = initialState, action) => {
           isDefault: false
         },
         formErrors: {}
-      }
+      };
     case SET_ADDRESS_LOADING:
       return {
         ...state,
         isLoading: action.payload
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default addressReducer
+export default addressReducer;

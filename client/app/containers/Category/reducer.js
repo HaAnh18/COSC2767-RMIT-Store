@@ -16,7 +16,7 @@ import {
   REMOVE_CATEGORY,
   SET_CATEGORIES_LOADING,
   RESET_CATEGORY
-} from './constants'
+} from './constants';
 
 const initialState = {
   categories: [],
@@ -33,7 +33,7 @@ const initialState = {
   formErrors: {},
   editFormErrors: {},
   isLoading: false
-}
+};
 
 const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -41,36 +41,36 @@ const categoryReducer = (state = initialState, action) => {
       return {
         ...state,
         categories: action.payload
-      }
+      };
     case FETCH_STORE_CATEGORIES:
       return {
         ...state,
         storeCategories: action.payload
-      }
+      };
     case FETCH_CATEGORY:
       return {
         ...state,
         category: action.payload
-      }
+      };
     case ADD_CATEGORY:
       return {
         ...state,
         categories: [...state.categories, action.payload]
-      }
+      };
     case REMOVE_CATEGORY:
-      const index = state.categories.findIndex(b => b._id === action.payload)
+      const index = state.categories.findIndex(b => b._id === action.payload);
       return {
         ...state,
         categories: [
           ...state.categories.slice(0, index),
           ...state.categories.slice(index + 1)
         ]
-      }
+      };
     case CATEGORY_CHANGE:
       return {
         ...state,
         categoryFormData: { ...state.categoryFormData, ...action.payload }
-      }
+      };
     case CATEGORY_EDIT_CHANGE:
       return {
         ...state,
@@ -78,22 +78,22 @@ const categoryReducer = (state = initialState, action) => {
           ...state.category,
           ...action.payload
         }
-      }
+      };
     case SET_CATEGORY_FORM_ERRORS:
       return {
         ...state,
         formErrors: action.payload
-      }
+      };
     case SET_CATEGORY_FORM_EDIT_ERRORS:
       return {
         ...state,
         editFormErrors: action.payload
-      }
+      };
     case SET_CATEGORIES_LOADING:
       return {
         ...state,
         isLoading: action.payload
-      }
+      };
     case RESET_CATEGORY:
       return {
         ...state,
@@ -108,10 +108,10 @@ const categoryReducer = (state = initialState, action) => {
         },
         formErrors: {},
         editFormErrors: {}
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default categoryReducer
+export default categoryReducer;

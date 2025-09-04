@@ -4,17 +4,17 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import actions from '../../actions'
+import actions from '../../actions';
 
-import SubPage from '../../components/Manager/SubPage'
-import AddMerchant from '../../components/Manager/AddMerchant'
+import SubPage from '../../components/Manager/SubPage';
+import AddMerchant from '../../components/Manager/AddMerchant';
 
 class Add extends React.PureComponent {
-  render () {
+  render() {
     const {
       history,
       merchantFormData,
@@ -22,7 +22,7 @@ class Add extends React.PureComponent {
       isSubmitting,
       merchantChange,
       addMerchant
-    } = this.props
+    } = this.props;
 
     return (
       <SubPage
@@ -39,7 +39,7 @@ class Add extends React.PureComponent {
           addMerchant={() => addMerchant(true)}
         />
       </SubPage>
-    )
+    );
   }
 }
 
@@ -49,7 +49,7 @@ const mapStateToProps = state => {
     formErrors: state.merchant.formErrors,
     isSubmitting: state.merchant.isSubmitting,
     isLoading: state.merchant.isLoading
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, actions)(Add)
+export default connect(mapStateToProps, actions)(Add);

@@ -4,10 +4,10 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
 const LoadingIndicator = props => {
-  const { inline, backdrop } = props
+  const { inline, backdrop } = props;
 
   return (
     <div
@@ -19,14 +19,14 @@ const LoadingIndicator = props => {
         className={`spinner${
           inline ? ' position-relative' : ' position-fixed overlay'
         }`}
-      />
+      ></div>
     </div>
-  )
-}
+  );
+};
 
 LoadingIndicator.defaultProps = {
   inline: false,
   backdrop: false
-}
+};
 
-export default LoadingIndicator
+export default LoadingIndicator;

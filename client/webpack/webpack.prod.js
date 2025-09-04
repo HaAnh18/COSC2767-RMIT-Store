@@ -1,21 +1,21 @@
 // Load environment variables from .env file
-require('dotenv').config()
-const webpack = require('webpack')
-const path = require('path')
-const TerserPlugin = require('terser-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackPwaManifest = require('webpack-pwa-manifest')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const webpackMerge = require('webpack-merge')
+require('dotenv').config();
+const webpack = require('webpack');
+const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const webpackMerge = require('webpack-merge');
 
 // Import common configuration
-const common = require('./webpack.common')
+const common = require('./webpack.common');
 
 // Define constants for current working directory and environment variables
-const CURRENT_WORKING_DIR = process.cwd()
-const NODE_ENV = process.env.NODE_ENV
-const API_URL = process.env.API_URL
+const CURRENT_WORKING_DIR = process.cwd();
+const NODE_ENV = process.env.NODE_ENV;
+const API_URL = process.env.API_URL;
 
 const config = {
   // Set mode to production for optimizations
@@ -185,7 +185,7 @@ const config = {
       canPrint: true
     })
   ]
-}
+};
 
 // Merge common configuration with production-specific configuration
-module.exports = webpackMerge(common, config)
+module.exports = webpackMerge(common, config);

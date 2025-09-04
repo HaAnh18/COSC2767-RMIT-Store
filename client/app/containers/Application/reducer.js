@@ -4,17 +4,17 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants'
+import { DEFAULT_ACTION } from './constants';
 
-const initialState = {}
+const initialState = {};
 
 const applicationReducer = (state = initialState, action) => {
   switch (action.type) {
     case DEFAULT_ACTION:
-      return state
+      return state;
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default applicationReducer
+export default applicationReducer;

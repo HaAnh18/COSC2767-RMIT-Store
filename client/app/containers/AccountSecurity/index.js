@@ -4,28 +4,28 @@
  *
  */
 
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
-import actions from '../../actions'
+import actions from '../../actions';
 
-import SubPage from '../../components/Manager/SubPage'
-import ResetPasswordForm from '../../components/Common/ResetPasswordForm'
+import SubPage from '../../components/Manager/SubPage';
+import ResetPasswordForm from '../../components/Common/ResetPasswordForm';
 
 class AccountSecurity extends React.PureComponent {
-  componentDidMount () {}
+  componentDidMount() {}
 
-  render () {
+  render() {
     const {
       resetFormData,
       formErrors,
       resetPasswordChange,
       resetAccountPassword
-    } = this.props
+    } = this.props;
 
     return (
       <div className='account-security'>
-        <SubPage title='Account Security' isMenuOpen={null}>
+        <SubPage title={'Account Security'} isMenuOpen={null}>
           <div className='reset-form'>
             <h4>Reset Password</h4>
             <ResetPasswordForm
@@ -37,7 +37,7 @@ class AccountSecurity extends React.PureComponent {
           </div>
         </SubPage>
       </div>
-    )
+    );
   }
 }
 
@@ -46,7 +46,7 @@ const mapStateToProps = state => {
     user: state.account.user,
     resetFormData: state.resetPassword.resetFormData,
     formErrors: state.resetPassword.formErrors
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, actions)(AccountSecurity)
+export default connect(mapStateToProps, actions)(AccountSecurity);

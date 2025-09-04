@@ -4,24 +4,24 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import actions from '../../actions'
+import actions from '../../actions';
 
-import Input from '../../components/Common/Input'
-import Button from '../../components/Common/Button'
+import Input from '../../components/Common/Input';
+import Button from '../../components/Common/Button';
 
 class Newsletter extends React.PureComponent {
-  render () {
+  render() {
     const { email, newsletterChange, subscribeToNewsletter, formErrors } =
-      this.props
+      this.props;
 
     const handleSubmit = event => {
-      event.preventDefault()
-      subscribeToNewsletter()
-    }
+      event.preventDefault();
+      subscribeToNewsletter();
+    };
 
     return (
       <div className='newsletter-form'>
@@ -29,32 +29,32 @@ class Newsletter extends React.PureComponent {
         <form onSubmit={handleSubmit}>
           <div className='subscribe'>
             <Input
-              type='text'
-              error={formErrors.email}
-              name='email'
-              placeholder='Enter Your Email Address'
+              type={'text'}
+              error={formErrors['email']}
+              name={'email'}
+              placeholder={'Enter Your Email Address'}
               value={email}
               onInputChange={(name, value) => {
-                newsletterChange(name, value)
+                newsletterChange(name, value);
               }}
               inlineElement={SubscribeButton}
             />
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 
 const SubscribeButton = (
   <Button type='submit' variant='primary' text='Join Now' />
-)
+);
 
 const mapStateToProps = state => {
   return {
     email: state.newsletter.email,
     formErrors: state.newsletter.formErrors
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, actions)(Newsletter)
+export default connect(mapStateToProps, actions)(Newsletter);

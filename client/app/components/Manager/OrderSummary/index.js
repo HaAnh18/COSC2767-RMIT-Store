@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Col } from 'reactstrap'
+import { Col } from 'reactstrap';
 
 const OrderSummary = props => {
-  const { order } = props
+  const { order } = props;
 
   return (
     <Col className='order-summary pt-3'>
@@ -34,7 +34,7 @@ const OrderSummary = props => {
         <p className='summary-value ml-auto'>${order.totalWithTax}</p>
       </div>
     </Col>
-  )
-}
+  );
+};
 
-export default OrderSummary
+export default OrderSummary;

@@ -4,28 +4,28 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { connect } from 'react-redux'
-import { Row, Col } from 'reactstrap'
+import { connect } from 'react-redux';
+import { Row, Col } from 'reactstrap';
 
-import actions from '../../actions'
-import banners from './banners.json'
-import CarouselSlider from '../../components/Common/CarouselSlider'
-import { responsiveOneItemCarousel } from '../../components/Common/CarouselSlider/utils'
-import CustomContent from '../../components/Common/CustomContent'
+import actions from '../../actions';
+import banners from './banners.json';
+import CarouselSlider from '../../components/Common/CarouselSlider';
+import { responsiveOneItemCarousel } from '../../components/Common/CarouselSlider/utils';
+import CustomContent from '../../components/Common/CustomContent';
 
 class Homepage extends React.PureComponent {
-  render () {
+  render() {
     return (
       <div className='homepage'>
         <Row className='flex-row'>
           <Col xs='12' className='mb-3 px-3 px-md-2'>
             <div className='home-carousel'>
               <CarouselSlider
-                swipeable
-                showDots
-                infinite
+                swipeable={true}
+                showDots={true}
+                infinite={true}
                 autoPlay={false}
                 slides={banners}
                 responsive={responsiveOneItemCarousel}
@@ -39,12 +39,12 @@ class Homepage extends React.PureComponent {
         </Row>
         <CustomContent />
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
-  return {}
-}
+  return {};
+};
 
-export default connect(mapStateToProps, actions)(Homepage)
+export default connect(mapStateToProps, actions)(Homepage);

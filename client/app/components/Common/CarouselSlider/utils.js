@@ -26,4 +26,4 @@ export const responsiveOneItemCarousel = {
     slidesToSlide: 1,
     partialVisibilityGutter: 0
   }
-}
+};

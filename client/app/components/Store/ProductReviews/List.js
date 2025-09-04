@@ -4,29 +4,29 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import ReactStars from 'react-rating-stars-component'
+import ReactStars from 'react-rating-stars-component';
 
-import { formatDate } from '../../../utils/date'
-import { getRandomColors } from '../../../utils'
+import { formatDate } from '../../../utils/date';
+import { getRandomColors } from '../../../utils';
 
 const List = props => {
-  const { reviews } = props
+  const { reviews } = props;
 
   const getAvatar = review => {
-    const color = getRandomColors()
+    const color = getRandomColors();
     if (review.user.firstName) {
       return (
         <div
           className='d-flex flex-column justify-content-center align-items-center fw-normal text-white avatar'
-          style={{ backgroundColor: color || 'red' }}
+          style={{ backgroundColor: color ? color : 'red' }}
         >
           {review.user.firstName.charAt(0)}
         </div>
-      )
+      );
     }
-  }
+  };
 
   return (
     <div className='review-list'>
@@ -40,10 +40,10 @@ const List = props => {
                 classNames='mr-2'
                 size={16}
                 edit={false}
-                color='#adb5bd'
-                activeColor='#ffb302'
-                a11y
-                isHalf
+                color={'#adb5bd'}
+                activeColor={'#ffb302'}
+                a11y={true}
+                isHalf={true}
                 emptyIcon={<i className='fa fa-star' />}
                 halfIcon={<i className='fa fa-star-half-alt' />}
                 filledIcon={<i className='fa fa-star' />}
@@ -56,7 +56,7 @@ const List = props => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default React.memo(List)
+export default React.memo(List);

@@ -4,18 +4,18 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import { formatDate } from '../../../utils/date'
+import { formatDate } from '../../../utils/date';
 
 const OrderList = props => {
-  const { orders } = props
+  const { orders } = props;
 
   const renderFirstItem = order => {
     if (order.products) {
-      const product = order.products[0].product
+      const product = order.products[0].product;
       return (
         <img
           className='item-image'
@@ -25,11 +25,11 @@ const OrderList = props => {
               : '/images/placeholder-image.png'
           }`}
         />
-      )
+      );
     } else {
-      return <img className='item-image' src='/images/placeholder-image.png' />
+      return <img className='item-image' src='/images/placeholder-image.png' />;
     }
-  }
+  };
 
   return (
     <div className='order-list'>
@@ -44,13 +44,11 @@ const OrderList = props => {
                 <div className='order-details'>
                   <div className='mb-1'>
                     <span>Status</span>
-                    {order?.products
-                      ? (
-                        <span className='order-label order-status'>{` ${order?.products[0].status}`}</span>
-                        )
-                      : (
-                        <span className='order-label order-status'>{' Unavailable'}</span>
-                        )}
+                    {order?.products ? (
+                      <span className='order-label order-status'>{` ${order?.products[0].status}`}</span>
+                    ) : (
+                      <span className='order-label order-status'>{` Unavailable`}</span>
+                    )}
                   </div>
                   <div className='mb-1'>
                     <span>Order #</span>
@@ -60,15 +58,13 @@ const OrderList = props => {
                     <span>Ordered on</span>
                     <span className='order-label'>{` ${formatDate(
                       order.created
-                    )}`}
-                    </span>
+                    )}`}</span>
                   </div>
                   <div className='mb-1'>
                     <span>Order Total</span>
                     <span className='order-label'>{` $${
                       order?.totalWithTax ? order?.totalWithTax : 0
-                    }`}
-                    </span>
+                    }`}</span>
                   </div>
                 </div>
               </div>
@@ -77,7 +73,7 @@ const OrderList = props => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default OrderList
+export default OrderList;

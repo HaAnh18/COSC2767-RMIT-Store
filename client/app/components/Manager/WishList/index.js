@@ -4,20 +4,20 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import { formatDate } from '../../../utils/date'
-import Button from '../../Common/Button'
-import { XIcon } from '../../Common/Icon'
+import { formatDate } from '../../../utils/date';
+import Button from '../../Common/Button';
+import { XIcon } from '../../Common/Icon';
 
 const WishList = props => {
-  const { wishlist, updateWishlist } = props
+  const { wishlist, updateWishlist } = props;
 
   const getProductImage = item => {
     if (item.product) {
-      const product = item.product
+      const product = item.product;
       return (
         <div className='d-flex flex-column justify-content-center align-items-center'>
           <img
@@ -29,9 +29,9 @@ const WishList = props => {
             }`}
           />
         </div>
-      )
+      );
     }
-  }
+  };
 
   return (
     <div className='w-list'>
@@ -51,8 +51,7 @@ const WishList = props => {
               <p className='mb-2 price'>${item.product.price}</p>
               <label className='text-truncate'>{`Wishlist Added on ${formatDate(
                 item.created
-              )}`}
-              </label>
+              )}`}</label>
             </div>
           </Link>
           <div className='remove-wishlist-box'>
@@ -61,14 +60,14 @@ const WishList = props => {
               icon={<XIcon className='text-white' width={15} />}
               round={20}
               onClick={e => {
-                updateWishlist(!item.isLiked, item.product._id)
+                updateWishlist(!item.isLiked, item.product._id);
               }}
             />
           </div>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default WishList
+export default WishList;

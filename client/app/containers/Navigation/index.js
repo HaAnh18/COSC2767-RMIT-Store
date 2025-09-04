@@ -4,13 +4,13 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { connect } from 'react-redux'
-import { Link, NavLink as ActiveLink, withRouter } from 'react-router-dom'
-import Autosuggest from 'react-autosuggest'
-import AutosuggestHighlightMatch from 'autosuggest-highlight/match'
-import AutosuggestHighlightParse from 'autosuggest-highlight/parse'
+import { connect } from 'react-redux';
+import { Link, NavLink as ActiveLink, withRouter } from 'react-router-dom';
+import Autosuggest from 'react-autosuggest';
+import AutosuggestHighlightMatch from 'autosuggest-highlight/match';
+import AutosuggestHighlightParse from 'autosuggest-highlight/parse';
 import {
   Container,
   Row,
@@ -24,58 +24,58 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem
-} from 'reactstrap'
+} from 'reactstrap';
 
-import actions from '../../actions'
+import actions from '../../actions';
 
-import Button from '../../components/Common/Button'
-import CartIcon from '../../components/Common/CartIcon'
-import { BarsIcon } from '../../components/Common/Icon'
-import MiniBrand from '../../components/Store//MiniBrand'
-import Menu from '../NavigationMenu'
-import Cart from '../Cart'
-import './styles.css'
+import Button from '../../components/Common/Button';
+import CartIcon from '../../components/Common/CartIcon';
+import { BarsIcon } from '../../components/Common/Icon';
+import MiniBrand from '../../components/Store//MiniBrand';
+import Menu from '../NavigationMenu';
+import Cart from '../Cart';
+import './styles.css';
 
 class Navigation extends React.PureComponent {
-  componentDidMount () {
-    this.props.fetchStoreBrands()
-    this.props.fetchStoreCategories()
+  componentDidMount() {
+    this.props.fetchStoreBrands();
+    this.props.fetchStoreCategories();
   }
 
-  toggleBrand () {
-    this.props.fetchStoreBrands()
-    this.props.toggleBrand()
+  toggleBrand() {
+    this.props.fetchStoreBrands();
+    this.props.toggleBrand();
   }
 
-  toggleMenu () {
-    this.props.fetchStoreCategories()
-    this.props.toggleMenu()
+  toggleMenu() {
+    this.props.fetchStoreCategories();
+    this.props.toggleMenu();
   }
 
-  getSuggestionValue (suggestion) {
-    return suggestion.name
+  getSuggestionValue(suggestion) {
+    return suggestion.name;
   }
 
-  renderSuggestion (suggestion, { query, isHighlighted }) {
+  renderSuggestion(suggestion, { query, isHighlighted }) {
     const BoldName = (suggestion, query) => {
-      const matches = AutosuggestHighlightMatch(suggestion.name, query)
-      const parts = AutosuggestHighlightParse(suggestion.name, matches)
+      const matches = AutosuggestHighlightMatch(suggestion.name, query);
+      const parts = AutosuggestHighlightParse(suggestion.name, matches);
 
       return (
         <div>
           {parts.map((part, index) => {
             const className = part.highlight
               ? 'react-autosuggest__suggestion-match'
-              : null
+              : null;
             return (
               <span className={className} key={index}>
                 {part.text}
               </span>
-            )
+            );
           })}
         </div>
-      )
-    }
+      );
+    };
 
     return (
       <Link to={`/product/${suggestion.slug}`}>
@@ -103,10 +103,10 @@ class Navigation extends React.PureComponent {
           </div>
         </div>
       </Link>
-    )
+    );
   }
 
-  render () {
+  render() {
     const {
       history,
       authenticated,
@@ -125,15 +125,15 @@ class Navigation extends React.PureComponent {
       onSearch,
       onSuggestionsFetchRequested,
       onSuggestionsClearRequested
-    } = this.props
+    } = this.props;
 
     const inputProps = {
       placeholder: 'Search Products',
       value: searchValue,
       onChange: (_, { newValue }) => {
-        onSearch(newValue)
+        onSearch(newValue);
       }
-    }
+    };
 
     return (
       <header className='header fixed-mobile-header'>
@@ -152,7 +152,7 @@ class Navigation extends React.PureComponent {
                 <i className='fa fa-phone' />
                 <span>24/7 Customer Support</span>
               </Col>
-
+              
             </Row>
           </Container>
         </div>
@@ -196,7 +196,7 @@ class Navigation extends React.PureComponent {
                 renderSuggestion={this.renderSuggestion}
                 inputProps={inputProps}
                 onSuggestionSelected={(_, item) => {
-                  history.push(`/product/${item.suggestion.slug}`)
+                  history.push(`/product/${item.suggestion.slug}`);
                 }}
               />
             </Col>
@@ -241,7 +241,7 @@ class Navigation extends React.PureComponent {
                     >
                       <DropdownToggle nav>
                         Brands
-                        <span className='fa fa-chevron-down dropdown-caret' />
+                        <span className='fa fa-chevron-down dropdown-caret'></span>
                       </DropdownToggle>
                       <DropdownMenu right className='nav-brand-dropdown'>
                         <div className='mini-brand'>
@@ -262,39 +262,37 @@ class Navigation extends React.PureComponent {
                       Shop
                     </NavLink>
                   </NavItem>
-                  {authenticated
-                    ? (
-                      <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle nav>
-                          {user.firstName ? user.firstName : 'Welcome'}
-                          <span className='fa fa-chevron-down dropdown-caret' />
-                        </DropdownToggle>
-                        <DropdownMenu right>
-                          <DropdownItem
-                            onClick={() => history.push('/dashboard')}
-                          >
-                            Dashboard
-                          </DropdownItem>
-                          <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
-                        </DropdownMenu>
-                      </UncontrolledDropdown>
-                      )
-                    : (
-                      <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle nav>
-                          Welcome!
-                          <span className='fa fa-chevron-down dropdown-caret' />
-                        </DropdownToggle>
-                        <DropdownMenu right>
-                          <DropdownItem onClick={() => history.push('/login')}>
-                            Login
-                          </DropdownItem>
-                          <DropdownItem onClick={() => history.push('/register')}>
-                            Sign Up
-                          </DropdownItem>
-                        </DropdownMenu>
-                      </UncontrolledDropdown>
-                      )}
+                  {authenticated ? (
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav>
+                        {user.firstName ? user.firstName : 'Welcome'}
+                        <span className='fa fa-chevron-down dropdown-caret'></span>
+                      </DropdownToggle>
+                      <DropdownMenu right>
+                        <DropdownItem
+                          onClick={() => history.push('/dashboard')}
+                        >
+                          Dashboard
+                        </DropdownItem>
+                        <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  ) : (
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav>
+                        Welcome!
+                        <span className='fa fa-chevron-down dropdown-caret'></span>
+                      </DropdownToggle>
+                      <DropdownMenu right>
+                        <DropdownItem onClick={() => history.push('/login')}>
+                          Login
+                        </DropdownItem>
+                        <DropdownItem onClick={() => history.push('/register')}>
+                          Sign Up
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  )}
                 </Nav>
               </Navbar>
             </Col>
@@ -304,7 +302,7 @@ class Navigation extends React.PureComponent {
         {/* hidden cart drawer */}
         <div
           className={isCartOpen ? 'mini-cart-open' : 'hidden-mini-cart'}
-          aria-hidden={`${!isCartOpen}`}
+          aria-hidden={`${isCartOpen ? false : true}`}
         >
           <div className='mini-cart'>
             <Cart />
@@ -320,7 +318,7 @@ class Navigation extends React.PureComponent {
         {/* hidden menu drawer */}
         <div
           className={isMenuOpen ? 'mini-menu-open' : 'hidden-mini-menu'}
-          aria-hidden={`${!isMenuOpen}`}
+          aria-hidden={`${isMenuOpen ? false : true}`}
         >
           <div className='mini-menu'>
             <Menu />
@@ -333,7 +331,7 @@ class Navigation extends React.PureComponent {
           />
         </div>
       </header>
-    )
+    );
   }
 }
 
@@ -349,7 +347,7 @@ const mapStateToProps = state => {
     user: state.account.user,
     searchValue: state.navigation.searchValue,
     suggestions: state.navigation.searchSuggestions
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, actions)(withRouter(Navigation))
+export default connect(mapStateToProps, actions)(withRouter(Navigation));

@@ -4,23 +4,23 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Switch, Route } from 'react-router-dom'
-import { Row, Col } from 'reactstrap'
+import { Switch, Route } from 'react-router-dom';
+import { Row, Col } from 'reactstrap';
 
-import AccountMenu from '../AccountMenu'
-import Page404 from '../../Common/Page404'
+import AccountMenu from '../AccountMenu';
+import Page404 from '../../Common/Page404';
 
-import { isProviderAllowed } from '../../../utils/app'
-import Account from '../../../containers/Account'
-import AccountSecurity from '../../../containers/AccountSecurity'
-import Address from '../../../containers/Address'
-import Order from '../../../containers/Order'
-import Wishlist from '../../../containers/WishList'
+import { isProviderAllowed } from '../../../utils/app';
+import Account from '../../../containers/Account';
+import AccountSecurity from '../../../containers/AccountSecurity';
+import Address from '../../../containers/Address';
+import Order from '../../../containers/Order';
+import Wishlist from '../../../containers/WishList';
 
 const Customer = props => {
-  const { user } = props
+  const { user } = props;
 
   return (
     <div className='customer'>
@@ -44,7 +44,7 @@ const Customer = props => {
         </Col>
       </Row>
     </div>
-  )
-}
+  );
+};
 
-export default Customer
+export default Customer;

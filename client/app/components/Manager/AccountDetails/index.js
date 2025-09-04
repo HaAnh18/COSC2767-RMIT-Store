@@ -4,37 +4,35 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Row, Col } from 'reactstrap'
+import { Row, Col } from 'reactstrap';
 
-import { EMAIL_PROVIDER } from '../../../constants'
-import UserRole from '../UserRole'
-import Input from '../../Common/Input'
-import Button from '../../Common/Button'
+import { EMAIL_PROVIDER } from '../../../constants';
+import UserRole from '../UserRole';
+import Input from '../../Common/Input';
+import Button from '../../Common/Button';
 
 const AccountDetails = props => {
-  const { user, accountChange, updateProfile } = props
+  const { user, accountChange, updateProfile } = props;
 
   const handleSubmit = event => {
-    event.preventDefault()
-    updateProfile()
-  }
+    event.preventDefault();
+    updateProfile();
+  };
 
   return (
     <div className='account-details'>
       <div className='info'>
         <div className='desc'>
           <p className='one-line-ellipsis mr-3'>
-            {user.provider === EMAIL_PROVIDER.Email
-              ? (
-                  user.email
-                )
-              : (
-                <span className='provider-email'>
-                  Logged in With {user.provider}
-                </span>
-                )}
+            {user.provider === EMAIL_PROVIDER.Email ? (
+              user.email
+            ) : (
+              <span className='provider-email'>
+                Logged in With {user.provider}
+              </span>
+            )}
           </p>
           <UserRole user={user} />
         </div>
@@ -43,25 +41,25 @@ const AccountDetails = props => {
         <Row>
           <Col xs='12' md='6'>
             <Input
-              type='text'
-              label='First Name'
-              name='firstName'
-              placeholder='Please Enter Your First Name'
+              type={'text'}
+              label={'First Name'}
+              name={'firstName'}
+              placeholder={'Please Enter Your First Name'}
               value={user.firstName ? user.firstName : ''}
               onInputChange={(name, value) => {
-                accountChange(name, value)
+                accountChange(name, value);
               }}
             />
           </Col>
           <Col xs='12' md='6'>
             <Input
-              type='text'
-              label='Last Name'
-              name='lastName'
-              placeholder='Please Enter Your Last Name'
+              type={'text'}
+              label={'Last Name'}
+              name={'lastName'}
+              placeholder={'Please Enter Your Last Name'}
               value={user.lastName ? user.lastName : ''}
               onInputChange={(name, value) => {
-                accountChange(name, value)
+                accountChange(name, value);
               }}
             />
           </Col>
@@ -80,13 +78,13 @@ const AccountDetails = props => {
           </Col> */}
           <Col xs='12' md='12'>
             <Input
-              type='text'
-              label='Phone Number'
-              name='phoneNumber'
-              placeholder='Please Enter Your Phone Number'
+              type={'text'}
+              label={'Phone Number'}
+              name={'phoneNumber'}
+              placeholder={'Please Enter Your Phone Number'}
               value={user.phoneNumber ? user.phoneNumber : ''}
               onInputChange={(name, value) => {
-                accountChange(name, value)
+                accountChange(name, value);
               }}
             />
           </Col>
@@ -97,7 +95,7 @@ const AccountDetails = props => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AccountDetails
+export default AccountDetails;

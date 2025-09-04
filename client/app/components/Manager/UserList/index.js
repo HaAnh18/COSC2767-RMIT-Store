@@ -4,13 +4,13 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { formatDate } from '../../../utils/date'
-import UserRole from '../UserRole'
+import { formatDate } from '../../../utils/date';
+import UserRole from '../UserRole';
 
 const UserList = props => {
-  const { users } = props
+  const { users } = props;
 
   return (
     <div className='u-list'>
@@ -33,7 +33,7 @@ const UserList = props => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default UserList
+export default UserList;

@@ -4,21 +4,21 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { connect } from 'react-redux'
-import { Row, Col } from 'reactstrap'
-import { Redirect, Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { Row, Col } from 'reactstrap';
+import { Redirect, Link } from 'react-router-dom';
 
-import actions from '../../actions'
+import actions from '../../actions';
 
-import Input from '../../components/Common/Input'
-import Button from '../../components/Common/Button'
-import Checkbox from '../../components/Common/Checkbox'
-import LoadingIndicator from '../../components/Common/LoadingIndicator'
+import Input from '../../components/Common/Input';
+import Button from '../../components/Common/Button';
+import Checkbox from '../../components/Common/Checkbox';
+import LoadingIndicator from '../../components/Common/LoadingIndicator';
 
 class Signup extends React.PureComponent {
-  render () {
+  render() {
     const {
       authenticated,
       signupFormData,
@@ -29,14 +29,14 @@ class Signup extends React.PureComponent {
       signupChange,
       signUp,
       subscribeChange
-    } = this.props
+    } = this.props;
 
-    if (authenticated) return <Redirect to='/dashboard' />
+    if (authenticated) return <Redirect to='/dashboard' />;
 
     const handleSubmit = event => {
-      event.preventDefault()
-      signUp()
-    }
+      event.preventDefault();
+      signUp();
+    };
 
     return (
       <div className='signup-form'>
@@ -52,53 +52,53 @@ class Signup extends React.PureComponent {
             >
               <Col xs='12' md='12'>
                 <Input
-                  type='text'
-                  error={formErrors.email}
-                  label='Your Email'
-                  name='email'
-                  placeholder='Enter Your Email Address'
+                  type={'text'}
+                  error={formErrors['email']}
+                  label={'Your Email'}
+                  name={'email'}
+                  placeholder={'Enter Your Email Address'}
                   value={signupFormData.email}
                   onInputChange={(name, value) => {
-                    signupChange(name, value)
+                    signupChange(name, value);
                   }}
                 />
               </Col>
               <Col xs='12' md='12'>
                 <Input
-                  type='text'
-                  error={formErrors.firstName}
-                  label='First Name'
-                  name='firstName'
-                  placeholder='Enter Your First Name'
+                  type={'text'}
+                  error={formErrors['firstName']}
+                  label={'First Name'}
+                  name={'firstName'}
+                  placeholder={'Enter Your First Name'}
                   value={signupFormData.firstName}
                   onInputChange={(name, value) => {
-                    signupChange(name, value)
+                    signupChange(name, value);
                   }}
                 />
               </Col>
               <Col xs='12' md='12'>
                 <Input
-                  type='text'
-                  error={formErrors.lastName}
-                  label='Last Name'
-                  name='lastName'
-                  placeholder='Enter Your Last Name'
+                  type={'text'}
+                  error={formErrors['lastName']}
+                  label={'Last Name'}
+                  name={'lastName'}
+                  placeholder={'Enter Your Last Name'}
                   value={signupFormData.lastName}
                   onInputChange={(name, value) => {
-                    signupChange(name, value)
+                    signupChange(name, value);
                   }}
                 />
               </Col>
               <Col xs='12' md='12'>
                 <Input
-                  type='password'
-                  label='Create Password'
-                  error={formErrors.password}
-                  name='password'
-                  placeholder='Choose a Password'
+                  type={'password'}
+                  label={'Create Password'}
+                  error={formErrors['password']}
+                  name={'password'}
+                  placeholder={'Choose a Password'}
                   value={signupFormData.password}
                   onInputChange={(name, value) => {
-                    signupChange(name, value)
+                    signupChange(name, value);
                   }}
                 />
               </Col>
@@ -113,8 +113,8 @@ class Signup extends React.PureComponent {
           </Row>
           <hr />
           <Checkbox
-            id='subscribe'
-            label='Sign me up for the newsletter'
+            id={'subscribe'}
+            label={'Sign me up for the newsletter'}
             checked={isSubscribed}
             onChange={subscribeChange}
           />
@@ -125,13 +125,13 @@ class Signup extends React.PureComponent {
               text='Join Now'
               disabled={isSubmitting}
             />
-            <Link className='mt-3 mt-md-0 redirect-link' to='/login'>
+            <Link className='mt-3 mt-md-0 redirect-link' to={'/login'}>
               Return to Login
             </Link>
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 
@@ -143,7 +143,7 @@ const mapStateToProps = state => {
     isLoading: state.signup.isLoading,
     isSubmitting: state.signup.isSubmitting,
     isSubscribed: state.signup.isSubscribed
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, actions)(Signup)
+export default connect(mapStateToProps, actions)(Signup);

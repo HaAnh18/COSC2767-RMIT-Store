@@ -4,30 +4,30 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import actions from '../../actions'
+import actions from '../../actions';
 
-import EditBrand from '../../components/Manager/EditBrand'
-import SubPage from '../../components/Manager/SubPage'
-import NotFound from '../../components/Common/NotFound'
+import EditBrand from '../../components/Manager/EditBrand';
+import SubPage from '../../components/Manager/SubPage';
+import NotFound from '../../components/Common/NotFound';
 
 class Edit extends React.PureComponent {
-  componentDidMount () {
-    const brandId = this.props.match.params.id
-    this.props.fetchBrand(brandId)
+  componentDidMount() {
+    const brandId = this.props.match.params.id;
+    this.props.fetchBrand(brandId);
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
-      const brandId = this.props.match.params.id
-      this.props.fetchBrand(brandId)
+      const brandId = this.props.match.params.id;
+      this.props.fetchBrand(brandId);
     }
   }
 
-  render () {
+  render() {
     const {
       history,
       user,
@@ -37,7 +37,7 @@ class Edit extends React.PureComponent {
       updateBrand,
       deleteBrand,
       activateBrand
-    } = this.props
+    } = this.props;
 
     return (
       <SubPage
@@ -45,23 +45,21 @@ class Edit extends React.PureComponent {
         actionTitle='Cancel'
         handleAction={history.goBack}
       >
-        {brand?._id
-          ? (
-            <EditBrand
-              user={user}
-              brand={brand}
-              brandChange={brandEditChange}
-              formErrors={formErrors}
-              updateBrand={updateBrand}
-              deleteBrand={deleteBrand}
-              activateBrand={activateBrand}
-            />
-            )
-          : (
-            <NotFound message='No brand found.' />
-            )}
+        {brand?._id ? (
+          <EditBrand
+            user={user}
+            brand={brand}
+            brandChange={brandEditChange}
+            formErrors={formErrors}
+            updateBrand={updateBrand}
+            deleteBrand={deleteBrand}
+            activateBrand={activateBrand}
+          />
+        ) : (
+          <NotFound message='No brand found.' />
+        )}
       </SubPage>
-    )
+    );
   }
 }
 
@@ -70,7 +68,7 @@ const mapStateToProps = state => {
     user: state.account.user,
     brand: state.brand.brand,
     formErrors: state.brand.editFormErrors
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, actions)(Edit)
+export default connect(mapStateToProps, actions)(Edit);

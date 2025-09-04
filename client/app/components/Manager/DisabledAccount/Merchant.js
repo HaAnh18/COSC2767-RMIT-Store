@@ -4,10 +4,10 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
 const DisabledMerchantAccount = props => {
-  const { user } = props
+  const { user } = props;
 
   return (
     <div
@@ -26,7 +26,7 @@ const DisabledMerchantAccount = props => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DisabledMerchantAccount
+export default DisabledMerchantAccount;

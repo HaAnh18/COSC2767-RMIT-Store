@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Row, Col } from 'reactstrap'
+import { Row, Col } from 'reactstrap';
 
-import Input from '../../Common/Input'
-import Button from '../../Common/Button'
+import Input from '../../Common/Input';
+import Button from '../../Common/Button';
 
 const AddMerchant = props => {
   const {
@@ -19,12 +19,12 @@ const AddMerchant = props => {
     submitTitle = 'Submit',
     merchantChange,
     addMerchant
-  } = props
+  } = props;
 
   const handleSubmit = event => {
-    event.preventDefault()
-    addMerchant()
-  }
+    event.preventDefault();
+    addMerchant();
+  };
 
   return (
     <div className='add-merchant'>
@@ -32,66 +32,66 @@ const AddMerchant = props => {
         <Row>
           <Col xs='12'>
             <Input
-              type='text'
-              error={formErrors.name}
-              label='Name'
-              name='name'
-              placeholder='Your Full Name'
+              type={'text'}
+              error={formErrors['name']}
+              label={'Name'}
+              name={'name'}
+              placeholder={'Your Full Name'}
               value={merchantFormData.name}
               onInputChange={(name, value) => {
-                merchantChange(name, value)
+                merchantChange(name, value);
               }}
             />
           </Col>
           <Col xs='12'>
             <Input
-              type='text'
-              error={formErrors.email}
-              label='Email Address'
-              name='email'
-              placeholder='Your Email Address'
+              type={'text'}
+              error={formErrors['email']}
+              label={'Email Address'}
+              name={'email'}
+              placeholder={'Your Email Address'}
               value={merchantFormData.email}
               onInputChange={(name, value) => {
-                merchantChange(name, value)
+                merchantChange(name, value);
               }}
             />
           </Col>
           <Col xs='12'>
             <Input
-              type='text'
-              error={formErrors.phoneNumber}
-              label='Phone Number'
-              name='phoneNumber'
-              placeholder='Your Phone Number'
+              type={'text'}
+              error={formErrors['phoneNumber']}
+              label={'Phone Number'}
+              name={'phoneNumber'}
+              placeholder={'Your Phone Number'}
               value={merchantFormData.phoneNumber}
               onInputChange={(name, value) => {
-                merchantChange(name, value)
+                merchantChange(name, value);
               }}
             />
           </Col>
           <Col xs='12'>
             <Input
-              type='text'
-              error={formErrors.brandName}
-              label='Brand'
-              name='brandName'
-              placeholder='Your Business Brand'
+              type={'text'}
+              error={formErrors['brandName']}
+              label={'Brand'}
+              name={'brandName'}
+              placeholder={'Your Business Brand'}
               value={merchantFormData.brand}
               onInputChange={(name, value) => {
-                merchantChange(name, value)
+                merchantChange(name, value);
               }}
             />
           </Col>
           <Col xs='12'>
             <Input
-              type='textarea'
-              error={formErrors.business}
-              label='Business'
-              name='business'
-              placeholder='Please Describe Your Business'
+              type={'textarea'}
+              error={formErrors['business']}
+              label={'Business'}
+              name={'business'}
+              placeholder={'Please Describe Your Business'}
               value={merchantFormData.business}
               onInputChange={(name, value) => {
-                merchantChange(name, value)
+                merchantChange(name, value);
               }}
             />
           </Col>
@@ -102,7 +102,7 @@ const AddMerchant = props => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AddMerchant
+export default AddMerchant;

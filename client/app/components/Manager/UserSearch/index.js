@@ -4,9 +4,9 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import SearchBar from '../../Common/SearchBar'
+import SearchBar from '../../Common/SearchBar';
 
 const UserSearch = props => {
   return (
@@ -20,7 +20,7 @@ const UserSearch = props => {
         onSearchSubmit={props.onSearchSubmit}
       />
     </div>
-  )
-}
+  );
+};
 
-export default UserSearch
+export default UserSearch;

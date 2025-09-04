@@ -4,15 +4,15 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Link } from 'react-router-dom'
-import { Row, Col } from 'reactstrap'
+import { Link } from 'react-router-dom';
+import { Row, Col } from 'reactstrap';
 
-import Input from '../../Common/Input'
-import Button from '../../Common/Button'
-import SelectOption from '../../Common/SelectOption'
-import Switch from '../../Common/Switch'
+import Input from '../../Common/Input';
+import Button from '../../Common/Button';
+import SelectOption from '../../Common/SelectOption';
+import Switch from '../../Common/Switch';
 
 const EditCategory = props => {
   const {
@@ -23,12 +23,12 @@ const EditCategory = props => {
     updateCategory,
     deleteCategory,
     activateCategory
-  } = props
+  } = props;
 
   const handleSubmit = event => {
-    event.preventDefault()
-    updateCategory()
-  }
+    event.preventDefault();
+    updateCategory();
+  };
 
   return (
     <div className='edit-category'>
@@ -42,52 +42,52 @@ const EditCategory = props => {
         <Row>
           <Col xs='12'>
             <Input
-              type='text'
-              error={formErrors.name}
-              label='Name'
-              name='name'
-              placeholder='Category Name'
+              type={'text'}
+              error={formErrors['name']}
+              label={'Name'}
+              name={'name'}
+              placeholder={'Category Name'}
               value={category.name}
               onInputChange={(name, value) => {
-                categoryChange(name, value)
+                categoryChange(name, value);
               }}
             />
           </Col>
           <Col xs='12'>
             <Input
-              type='text'
-              error={formErrors.slug}
-              label='Slug'
-              name='slug'
-              placeholder='Category Slug'
+              type={'text'}
+              error={formErrors['slug']}
+              label={'Slug'}
+              name={'slug'}
+              placeholder={'Category Slug'}
               value={category.slug}
               onInputChange={(name, value) => {
-                categoryChange(name, value)
+                categoryChange(name, value);
               }}
             />
           </Col>
           <Col xs='12' md='12'>
             <Input
-              type='textarea'
-              error={formErrors.description}
-              label='Description'
-              name='description'
-              placeholder='Category Description'
+              type={'textarea'}
+              error={formErrors['description']}
+              label={'Description'}
+              name={'description'}
+              placeholder={'Category Description'}
               value={category.description}
               onInputChange={(name, value) => {
-                categoryChange(name, value)
+                categoryChange(name, value);
               }}
             />
           </Col>
           <Col xs='12' md='12'>
             <SelectOption
-              error={formErrors.products}
-              label='Select Products'
-              multi
+              error={formErrors['products']}
+              label={'Select Products'}
+              multi={true}
               defaultValue={category.products}
               options={products}
               handleSelectChange={value => {
-                categoryChange('products', value)
+                categoryChange('products', value);
               }}
             />
           </Col>
@@ -97,11 +97,12 @@ const EditCategory = props => {
               tooltip={category.isActive}
               tooltipContent={`Disabling ${category.name} will also disable all ${category.name} products.`}
               id={`enable-category-${category._id}`}
-              name='isActive'
-              label='Active?'
+              name={'isActive'}
+              label={'Active?'}
               checked={category.isActive}
               toggleCheckboxChange={value =>
-                activateCategory(category._id, value)}
+                activateCategory(category._id, value)
+              }
             />
           </Col>
         </Row>
@@ -120,7 +121,7 @@ const EditCategory = props => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default EditCategory
+export default EditCategory;

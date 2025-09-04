@@ -23,7 +23,7 @@ import {
   SET_PRODUCTS_LOADING,
   SET_ADVANCED_FILTERS,
   RESET_ADVANCED_FILTERS
-} from './constants'
+} from './constants';
 
 const initialState = {
   products: [],
@@ -67,7 +67,7 @@ const initialState = {
     count: 0,
     limit: 10
   }
-}
+};
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -75,18 +75,18 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload
-      }
+      };
     case FETCH_STORE_PRODUCTS:
       return {
         ...state,
         storeProducts: action.payload
-      }
+      };
     case FETCH_PRODUCT:
       return {
         ...state,
         product: action.payload,
         editFormErrors: {}
-      }
+      };
     case FETCH_STORE_PRODUCT:
       return {
         ...state,
@@ -95,28 +95,28 @@ const productReducer = (state = initialState, action) => {
           quantity: 1
         },
         shopFormErrors: {}
-      }
+      };
     case SET_PRODUCTS_LOADING:
       return {
         ...state,
         isLoading: action.payload
-      }
+      };
     case FETCH_PRODUCTS_SELECT:
-      return { ...state, productsSelect: action.payload }
+      return { ...state, productsSelect: action.payload };
     case ADD_PRODUCT:
       return {
         ...state,
         products: [...state.products, action.payload]
-      }
+      };
     case REMOVE_PRODUCT:
-      const index = state.products.findIndex(b => b._id === action.payload)
+      const index = state.products.findIndex(b => b._id === action.payload);
       return {
         ...state,
         products: [
           ...state.products.slice(0, index),
           ...state.products.slice(index + 1)
         ]
-      }
+      };
     case PRODUCT_CHANGE:
       return {
         ...state,
@@ -124,7 +124,7 @@ const productReducer = (state = initialState, action) => {
           ...state.productFormData,
           ...action.payload
         }
-      }
+      };
     case PRODUCT_EDIT_CHANGE:
       return {
         ...state,
@@ -132,7 +132,7 @@ const productReducer = (state = initialState, action) => {
           ...state.product,
           ...action.payload
         }
-      }
+      };
     case PRODUCT_SHOP_CHANGE:
       return {
         ...state,
@@ -140,22 +140,22 @@ const productReducer = (state = initialState, action) => {
           ...state.productShopData,
           ...action.payload
         }
-      }
+      };
     case SET_PRODUCT_FORM_ERRORS:
       return {
         ...state,
         formErrors: action.payload
-      }
+      };
     case SET_PRODUCT_FORM_EDIT_ERRORS:
       return {
         ...state,
         editFormErrors: action.payload
-      }
+      };
     case SET_PRODUCT_SHOP_FORM_ERRORS:
       return {
         ...state,
         shopFormErrors: action.payload
-      }
+      };
     case RESET_PRODUCT:
       return {
         ...state,
@@ -177,7 +177,7 @@ const productReducer = (state = initialState, action) => {
           _id: ''
         },
         formErrors: {}
-      }
+      };
     case RESET_PRODUCT_SHOP:
       return {
         ...state,
@@ -185,7 +185,7 @@ const productReducer = (state = initialState, action) => {
           quantity: 1
         },
         shopFormErrors: {}
-      }
+      };
     case SET_ADVANCED_FILTERS:
       return {
         ...state,
@@ -193,7 +193,7 @@ const productReducer = (state = initialState, action) => {
           ...state.advancedFilters,
           ...action.payload
         }
-      }
+      };
     case RESET_ADVANCED_FILTERS:
       return {
         ...state,
@@ -210,10 +210,10 @@ const productReducer = (state = initialState, action) => {
           count: 0,
           limit: 10
         }
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default productReducer
+export default productReducer;

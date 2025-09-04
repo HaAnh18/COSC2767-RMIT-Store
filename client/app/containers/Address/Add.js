@@ -4,24 +4,24 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import actions from '../../actions'
+import actions from '../../actions';
 
-import AddAddress from '../../components/Manager/AddAddress'
-import SubPage from '../../components/Manager/SubPage'
+import AddAddress from '../../components/Manager/AddAddress';
+import SubPage from '../../components/Manager/SubPage';
 
 class Add extends React.PureComponent {
-  render () {
+  render() {
     const {
       history,
       addressFormData,
       formErrors,
       addressChange,
       addAddress
-    } = this.props
+    } = this.props;
 
     return (
       <SubPage
@@ -36,7 +36,7 @@ class Add extends React.PureComponent {
           addAddress={addAddress}
         />
       </SubPage>
-    )
+    );
   }
 }
 
@@ -44,7 +44,7 @@ const mapStateToProps = state => {
   return {
     addressFormData: state.address.addressFormData,
     formErrors: state.address.formErrors
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, actions)(Add)
+export default connect(mapStateToProps, actions)(Add);

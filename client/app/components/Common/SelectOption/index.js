@@ -4,10 +4,10 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import Select from 'react-select'
-import makeAnimated from 'react-select/animated'
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 
 const SelectOption = props => {
   const {
@@ -19,15 +19,15 @@ const SelectOption = props => {
     defaultValue,
     value,
     handleSelectChange
-  } = props
+  } = props;
 
   const _handleSelectChange = value => {
-    handleSelectChange(value)
-  }
+    handleSelectChange(value);
+  };
 
-  const animatedComponents = makeAnimated()
+  const animatedComponents = makeAnimated();
 
-  const styles = `select-box${error ? ' invalid' : ''}`
+  const styles = `select-box${error ? ' invalid' : ''}`;
 
   return (
     <div className={styles}>
@@ -46,10 +46,10 @@ const SelectOption = props => {
       />
       <span className='invalid-message'>{error && error[0]}</span>
     </div>
-  )
-}
+  );
+};
 
-export default SelectOption
+export default SelectOption;
 
 const dropdownStyles = {
   control: (styles, { isFocused }) => {
@@ -67,13 +67,13 @@ const dropdownStyles = {
         borderColor: !isFocused ? '#e4e6eb' : '#bdcbd2',
         boxShadow: 'none'
       }
-    }
+    };
   },
   menu: styles => {
     return {
       ...styles,
       zIndex: 2
-    }
+    };
   },
   option: (styles, { isDisabled, isFocused, isSelected }) => {
     return {
@@ -100,7 +100,7 @@ const dropdownStyles = {
         ...styles[':active'],
         backgroundColor: !isDisabled ? '#eceef3' : undefined
       }
-    }
+    };
   },
   indicatorSeparator: styles => ({
     ...styles,
@@ -124,4 +124,4 @@ const dropdownStyles = {
     color: '#000054',
     fontFamily: 'Poppins'
   })
-}
+};

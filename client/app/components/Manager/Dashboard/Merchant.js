@@ -4,21 +4,21 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Switch, Route } from 'react-router-dom'
-import { Row, Col } from 'reactstrap'
+import { Switch, Route } from 'react-router-dom';
+import { Row, Col } from 'reactstrap';
 
-import AccountMenu from '../AccountMenu'
-import Page404 from '../../Common/Page404'
+import AccountMenu from '../AccountMenu';
+import Page404 from '../../Common/Page404';
 
-import Account from '../../../containers/Account'
-import AccountSecurity from '../../../containers/AccountSecurity'
-import Address from '../../../containers/Address'
-import Product from '../../../containers/Product'
-import Brand from '../../../containers/Brand'
-import Order from '../../../containers/Order'
-import Wishlist from '../../../containers/WishList'
+import Account from '../../../containers/Account';
+import AccountSecurity from '../../../containers/AccountSecurity';
+import Address from '../../../containers/Address';
+import Product from '../../../containers/Product';
+import Brand from '../../../containers/Brand';
+import Order from '../../../containers/Order';
+import Wishlist from '../../../containers/WishList';
 
 const Merchant = props => {
   return (
@@ -43,7 +43,7 @@ const Merchant = props => {
         </Col>
       </Row>
     </div>
-  )
-}
+  );
+};
 
-export default Merchant
+export default Merchant;

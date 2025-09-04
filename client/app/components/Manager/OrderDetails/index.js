@@ -4,16 +4,16 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Row, Col } from 'reactstrap'
+import { Row, Col } from 'reactstrap';
 
-import OrderMeta from '../OrderMeta'
-import OrderItems from '../OrderItems'
-import OrderSummary from '../OrderSummary'
+import OrderMeta from '../OrderMeta';
+import OrderItems from '../OrderItems';
+import OrderSummary from '../OrderSummary';
 
 const OrderDetails = props => {
-  const { order, user, cancelOrder, updateOrderItemStatus, onBack } = props
+  const { order, user, cancelOrder, updateOrderItemStatus, onBack } = props;
   return (
     <div className='order-details'>
       <Row>
@@ -34,7 +34,7 @@ const OrderDetails = props => {
         </Col>
       </Row>
     </div>
-  )
-}
+  );
+};
 
-export default OrderDetails
+export default OrderDetails;

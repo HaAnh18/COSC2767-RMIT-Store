@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { MERCHANT_STATUS } from '../../../constants'
-import { formatDate } from '../../../utils/date'
-import Button from '../../Common/Button'
-import { CheckIcon, XIcon, RefreshIcon, TrashIcon } from '../../Common/Icon'
+import { MERCHANT_STATUS } from '../../../constants';
+import { formatDate } from '../../../utils/date';
+import Button from '../../Common/Button';
+import { CheckIcon, XIcon, RefreshIcon, TrashIcon } from '../../Common/Icon';
 
 const MerchantList = props => {
   const {
@@ -18,7 +18,7 @@ const MerchantList = props => {
     rejectMerchant,
     deleteMerchant,
     disableMerchant
-  } = props
+  } = props;
 
   const renderMerchantPopover = merchant => (
     <div className='p-2'>
@@ -35,7 +35,7 @@ const MerchantList = props => {
         onClick={() => disableMerchant(merchant, !merchant.isActive)}
       />
     </div>
-  )
+  );
 
   return (
     <div className='merchant-list'>
@@ -59,136 +59,130 @@ const MerchantList = props => {
 
             <hr />
 
-            {merchant.status === MERCHANT_STATUS.Approved
-              ? (
-                <>
-                  <div className='d-flex flex-row justify-content-between align-items-center mx-0'>
-                    <div className='d-flex flex-row mx-0'>
-                      <CheckIcon className='text-green' />
-                      <p className='ml-2 mb-0'>Approved</p>
-                    </div>
-
-                    <div className='d-flex flex-row align-items-center mx-0'>
-                      <Button
-                        className='ml-3'
-                        size='lg'
-                        round={20}
-                        icon={<TrashIcon width={20} />}
-                        tooltip
-                        tooltipContent='Delete'
-                        id={`delete-${merchant._id}`}
-                        onClick={() => deleteMerchant(merchant)}
-                      />
-                    </div>
+            {merchant.status === MERCHANT_STATUS.Approved ? (
+              <>
+                <div className='d-flex flex-row justify-content-between align-items-center mx-0'>
+                  <div className='d-flex flex-row mx-0'>
+                    <CheckIcon className='text-green' />
+                    <p className='ml-2 mb-0'>Approved</p>
                   </div>
-                  <Button
-                    className='w-100 mt-3'
-                    size='sm'
-                    text={
+
+                  <div className='d-flex flex-row align-items-center mx-0'>
+                    <Button
+                      className='ml-3'
+                      size='lg'
+                      round={20}
+                      icon={<TrashIcon width={20} />}
+                      tooltip={true}
+                      tooltipContent='Delete'
+                      id={`delete-${merchant._id}`}
+                      onClick={() => deleteMerchant(merchant)}
+                    />
+                  </div>
+                </div>
+                <Button
+                  className='w-100 mt-3'
+                  size='sm'
+                  text={
                     merchant.isActive ? 'Disable Merchant' : 'Enable Merchant'
                   }
-                    popover
-                    popoverTitle={`Are you sure you want to ${
+                  popover={true}
+                  popoverTitle={`Are you sure you want to ${
                     merchant.isActive ? 'disable' : 'enable'
                   } ${merchant.name}'s merchant account?`}
-                    popoverContent={renderMerchantPopover(merchant)}
+                  popoverContent={renderMerchantPopover(merchant)}
+                />
+              </>
+            ) : merchant.status === MERCHANT_STATUS.Rejected ? (
+              <>
+                <div className='d-flex flex-row justify-content-between align-items-center mx-0'>
+                  <Button
+                    size='lg'
+                    round={20}
+                    icon={<RefreshIcon width={18} className='text-primary' />}
+                    tooltip={true}
+                    tooltipContent='Re-Approve'
+                    id={`re-approve-${merchant._id}`}
+                    onClick={() => approveMerchant(merchant)}
                   />
-                </>
-                )
-              : merchant.status === MERCHANT_STATUS.Rejected
-                ? (
-                  <>
-                    <div className='d-flex flex-row justify-content-between align-items-center mx-0'>
-                      <Button
-                        size='lg'
-                        round={20}
-                        icon={<RefreshIcon width={18} className='text-primary' />}
-                        tooltip
-                        tooltipContent='Re-Approve'
-                        id={`re-approve-${merchant._id}`}
-                        onClick={() => approveMerchant(merchant)}
-                      />
-                      <div className='d-flex flex-row align-items-center mx-0'>
-                        <Button
-                          className='ml-3'
-                          size='lg'
-                          round={20}
-                          icon={<TrashIcon width={20} />}
-                          tooltip
-                          tooltipContent='Delete'
-                          id={`delete-${merchant._id}`}
-                          onClick={() => deleteMerchant(merchant)}
-                        />
-                      </div>
-                    </div>
-                  </>
-                  )
-                : merchant.email
-                  ? (
-                    <div className='d-flex flex-row justify-content-between align-items-center mx-0'>
-                      <div className='d-flex flex-row mx-0'>
-                        <Button
-                          size='lg'
-                          round={20}
-                          icon={<CheckIcon width={18} className='text-green' />}
-                          tooltip
-                          tooltipContent='Approve'
-                          id={`approve-${merchant._id}`}
-                          onClick={() => approveMerchant(merchant)}
-                        />
-                        <Button
-                          className='ml-2'
-                          size='lg'
-                          round={20}
-                          icon={<XIcon width={20} />}
-                          tooltip
-                          tooltipContent='Reject'
-                          id={`reject-${merchant._id}`}
-                          onClick={() => rejectMerchant(merchant)}
-                        />
-                      </div>
-                      <div className='d-flex flex-row align-items-center mx-0'>
-                        <Button
-                          className='ml-3'
-                          size='lg'
-                          round={20}
-                          icon={<TrashIcon width={20} />}
-                          tooltip
-                          tooltipContent='Delete'
-                          id={`delete-${merchant._id}`}
-                          onClick={() => deleteMerchant(merchant)}
-                        />
-                      </div>
-                    </div>
-                    )
-                  : (
-                    <>
-                      <p className='text-truncate'>
-                        Merchant doesn't have email. Call at
-                        <a
-                          href={`tel:${merchant.phoneNumber}`}
-                          className='text-primary'
-                        >
-                          {' '}
-                          {merchant.phoneNumber}
-                        </a>
-                      </p>
-                      <Button
-                        size='lg'
-                        round={20}
-                        icon={<TrashIcon width={20} />}
-                        tooltip
-                        tooltipContent='Delete'
-                        id={`delete-${merchant._id}`}
-                        onClick={() => deleteMerchant(merchant)}
-                      />
-                    </>
-                    )}
+                  <div className='d-flex flex-row align-items-center mx-0'>
+                    <Button
+                      className='ml-3'
+                      size='lg'
+                      round={20}
+                      icon={<TrashIcon width={20} />}
+                      tooltip={true}
+                      tooltipContent='Delete'
+                      id={`delete-${merchant._id}`}
+                      onClick={() => deleteMerchant(merchant)}
+                    />
+                  </div>
+                </div>
+              </>
+            ) : merchant.email ? (
+              <div className='d-flex flex-row justify-content-between align-items-center mx-0'>
+                <div className='d-flex flex-row mx-0'>
+                  <Button
+                    size='lg'
+                    round={20}
+                    icon={<CheckIcon width={18} className='text-green' />}
+                    tooltip={true}
+                    tooltipContent='Approve'
+                    id={`approve-${merchant._id}`}
+                    onClick={() => approveMerchant(merchant)}
+                  />
+                  <Button
+                    className='ml-2'
+                    size='lg'
+                    round={20}
+                    icon={<XIcon width={20} />}
+                    tooltip={true}
+                    tooltipContent='Reject'
+                    id={`reject-${merchant._id}`}
+                    onClick={() => rejectMerchant(merchant)}
+                  />
+                </div>
+                <div className='d-flex flex-row align-items-center mx-0'>
+                  <Button
+                    className='ml-3'
+                    size='lg'
+                    round={20}
+                    icon={<TrashIcon width={20} />}
+                    tooltip={true}
+                    tooltipContent='Delete'
+                    id={`delete-${merchant._id}`}
+                    onClick={() => deleteMerchant(merchant)}
+                  />
+                </div>
+              </div>
+            ) : (
+              <>
+                <p className='text-truncate'>
+                  Merchant doesn't have email. Call at
+                  <a
+                    href={`tel:${merchant.phoneNumber}`}
+                    className='text-primary'
+                  >
+                    {' '}
+                    {merchant.phoneNumber}
+                  </a>
+                </p>
+                <Button
+                  size='lg'
+                  round={20}
+                  icon={<TrashIcon width={20} />}
+                  tooltip={true}
+                  tooltipContent='Delete'
+                  id={`delete-${merchant._id}`}
+                  onClick={() => deleteMerchant(merchant)}
+                />
+              </>
+            )}
           </div>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default MerchantList
+export default MerchantList;

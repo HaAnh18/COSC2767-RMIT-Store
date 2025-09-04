@@ -4,19 +4,19 @@
  *
  */
 
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
-import actions from '../../actions'
+import actions from '../../actions';
 
-import CartList from '../../components/Store/CartList'
-import CartSummary from '../../components/Store/CartSummary'
-import Checkout from '../../components/Store/Checkout'
-import { BagIcon, CloseIcon } from '../../components/Common/Icon'
-import Button from '../../components/Common/Button'
+import CartList from '../../components/Store/CartList';
+import CartSummary from '../../components/Store/CartSummary';
+import Checkout from '../../components/Store/Checkout';
+import { BagIcon, CloseIcon } from '../../components/Common/Icon';
+import Button from '../../components/Common/Button';
 
 class Cart extends React.PureComponent {
-  render () {
+  render() {
     const {
       isCartOpen,
       cartItems,
@@ -27,7 +27,7 @@ class Cart extends React.PureComponent {
       handleRemoveFromCart,
       placeOrder,
       authenticated
-    } = this.props
+    } = this.props;
 
     return (
       <div className='cart'>
@@ -42,22 +42,20 @@ class Cart extends React.PureComponent {
             />
           )}
         </div>
-        {cartItems.length > 0
-          ? (
-            <div className='cart-body'>
-              <CartList
-                toggleCart={toggleCart}
-                cartItems={cartItems}
-                handleRemoveFromCart={handleRemoveFromCart}
-              />
-            </div>
-            )
-          : (
-            <div className='empty-cart'>
-              <BagIcon />
-              <p>Your shopping cart is empty</p>
-            </div>
-            )}
+        {cartItems.length > 0 ? (
+          <div className='cart-body'>
+            <CartList
+              toggleCart={toggleCart}
+              cartItems={cartItems}
+              handleRemoveFromCart={handleRemoveFromCart}
+            />
+          </div>
+        ) : (
+          <div className='empty-cart'>
+            <BagIcon />
+            <p>Your shopping cart is empty</p>
+          </div>
+        )}
         {cartItems.length > 0 && (
           <div className='cart-checkout'>
             <CartSummary cartTotal={cartTotal} />
@@ -70,7 +68,7 @@ class Cart extends React.PureComponent {
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 
@@ -80,7 +78,7 @@ const mapStateToProps = state => {
     cartItems: state.cart.cartItems,
     cartTotal: state.cart.cartTotal,
     authenticated: state.authentication.authenticated
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, actions)(Cart)
+export default connect(mapStateToProps, actions)(Cart);

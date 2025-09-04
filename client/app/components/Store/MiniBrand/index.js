@@ -4,23 +4,23 @@
  *
  */
 
-import React from 'react'
+import React from 'react';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const MiniBrand = props => {
-  const { brands, toggleBrand } = props
+  const { brands, toggleBrand } = props;
 
   const handleMenuItemClick = () => {
-    toggleBrand()
-  }
+    toggleBrand();
+  };
 
   return (
     <div className='mini-brand-list'>
       <div className='d-flex align-items-center justify-content-between min-brand-title'>
         <h3 className='mb-0 text-uppercase'>Shop By Brand</h3>
         <Link
-          to='/brands'
+          to={'/brands'}
           className='redirect-link'
           role='menuitem'
           onClick={handleMenuItemClick}
@@ -43,7 +43,7 @@ const MiniBrand = props => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MiniBrand
+export default MiniBrand;
