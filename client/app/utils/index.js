@@ -48,22 +48,22 @@ const colors = [
   '#FF4D4D',
   '#99E6E6',
   '#6666FF'
-];
+]
 
 export const getRandomColors = () => {
-  const index = Math.floor(Math.random() * colors.length);
-  return colors[index];
-};
+  const index = Math.floor(Math.random() * colors.length)
+  return colors[index]
+}
 
-let cache = {};
+const cache = {}
 export const getMemoizedRandomColors = s => {
-  const color = getRandomColors();
+  const color = getRandomColors()
 
   if (s in cache) {
-    return cache[s];
+    return cache[s]
   } else {
-    let result = color;
-    cache[s] = result;
-    return result;
+    const result = color
+    cache[s] = result
+    return result
   }
-};
+}

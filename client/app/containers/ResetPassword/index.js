@@ -4,25 +4,25 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
-import actions from '../../actions';
-import ResetPasswordForm from '../../components/Common/ResetPasswordForm';
+import actions from '../../actions'
+import ResetPasswordForm from '../../components/Common/ResetPasswordForm'
 
 class ResetPassword extends React.PureComponent {
-  handleResetPassword() {
-    const token = this.props.match.params.token;
-    this.props.resetPassword(token);
+  handleResetPassword () {
+    const token = this.props.match.params.token
+    this.props.resetPassword(token)
   }
 
-  render() {
+  render () {
     const { authenticated, resetFormData, formErrors, resetPasswordChange } =
-      this.props;
+      this.props
 
-    if (authenticated) return <Redirect to='/dashboard' />;
+    if (authenticated) return <Redirect to='/dashboard' />
 
     return (
       <div className='reset-password-form'>
@@ -36,7 +36,7 @@ class ResetPassword extends React.PureComponent {
           resetPassword={() => this.handleResetPassword()}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -45,7 +45,7 @@ const mapStateToProps = state => {
     authenticated: state.authentication.authenticated,
     resetFormData: state.resetPassword.resetFormData,
     formErrors: state.resetPassword.formErrors
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, actions)(ResetPassword);
+export default connect(mapStateToProps, actions)(ResetPassword)

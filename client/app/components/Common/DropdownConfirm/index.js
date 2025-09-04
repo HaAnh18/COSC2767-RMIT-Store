@@ -4,16 +4,16 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
 import {
   UncontrolledButtonDropdown,
   DropdownMenu,
   DropdownToggle
-} from 'reactstrap';
+} from 'reactstrap'
 
 const DropdownConfirm = props => {
-  const { className, label, children } = props;
+  const { className, label, children } = props
 
   return (
     <div className={`dropdown-confirm ${className}`}>
@@ -21,17 +21,17 @@ const DropdownConfirm = props => {
         <DropdownToggle nav>
           <div className='dropdown-action sm'>
             {label}
-            <span className='fa fa-chevron-down dropdown-caret'></span>
+            <span className='fa fa-chevron-down dropdown-caret' />
           </div>
         </DropdownToggle>
         <DropdownMenu right>{children}</DropdownMenu>
       </UncontrolledButtonDropdown>
     </div>
-  );
-};
+  )
+}
 
 DropdownConfirm.defaultProps = {
   label: ''
-};
+}
 
-export default DropdownConfirm;
+export default DropdownConfirm

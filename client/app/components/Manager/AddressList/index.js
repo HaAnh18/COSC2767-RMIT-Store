@@ -4,14 +4,14 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-import { AddressIcon, CheckIcon } from '../../Common/Icon';
+import { AddressIcon, CheckIcon } from '../../Common/Icon'
 
 const AddressList = props => {
-  const { addresses } = props;
+  const { addresses } = props
 
   return (
     <div className='a-list'>
@@ -26,16 +26,18 @@ const AddressList = props => {
               <AddressIcon />
             </div>
             <div className='flex-1 p-3 p-lg-4'>
-              {address.isDefault ? (
-                <div className='d-flex align-items-center justify-content-between mb-2'>
-                  <h4 className='mb-0 mr-2 one-line-ellipsis'>
-                    Default Delivery Address
-                  </h4>
-                  <CheckIcon className='text-green' />
-                </div>
-              ) : (
-                <h4 className='mb-0'>Delivery Address</h4>
-              )}
+              {address.isDefault
+                ? (
+                  <div className='d-flex align-items-center justify-content-between mb-2'>
+                    <h4 className='mb-0 mr-2 one-line-ellipsis'>
+                      Default Delivery Address
+                    </h4>
+                    <CheckIcon className='text-green' />
+                  </div>
+                  )
+                : (
+                  <h4 className='mb-0'>Delivery Address</h4>
+                  )}
               <p className='mb-2 address-desc'>
                 {`${address?.address} ${address?.city}, ${address?.country}, ${address?.zipCode}`}
               </p>
@@ -44,7 +46,7 @@ const AddressList = props => {
         </Link>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default AddressList;
+export default AddressList

@@ -4,14 +4,14 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-import AddToWishList from '../AddToWishList';
+import AddToWishList from '../AddToWishList'
 
 const ProductList = props => {
-  const { products, updateWishlist, authenticated } = props;
+  const { products, updateWishlist, authenticated } = props
 
   return (
     <div className='product-list'>
@@ -69,7 +69,7 @@ const ProductList = props => {
                             product.totalReviews !== 0 ? 'checked' : ''
                           }`}
                           style={{ color: '#ffb302' }}
-                        ></span>
+                        />
                       </p>
                     )}
                   </div>
@@ -80,7 +80,7 @@ const ProductList = props => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ProductList;
+export default ProductList

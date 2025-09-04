@@ -1,7 +1,7 @@
-const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const CURRENT_WORKING_DIR = process.cwd();
+const CURRENT_WORKING_DIR = process.cwd()
 
 module.exports = {
   // Entry point for the application
@@ -32,4 +32,4 @@ module.exports = {
       }
     ])
   ]
-};
+}

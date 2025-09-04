@@ -5,12 +5,12 @@
  */
 
 // Import React library
-import React from 'react';
+import React from 'react'
 // Import ReactDOM library for rendering React components
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
 
 // Import the main App component
-import App from './app';
+import App from './app'
 
 // Render the App component into the root element in the HTML
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'))

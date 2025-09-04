@@ -4,20 +4,20 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
-import { Row, Col } from 'reactstrap';
+import { connect } from 'react-redux'
+import { Redirect, Link } from 'react-router-dom'
+import { Row, Col } from 'reactstrap'
 
-import actions from '../../actions';
+import actions from '../../actions'
 
-import Input from '../../components/Common/Input';
-import Button from '../../components/Common/Button';
-import LoadingIndicator from '../../components/Common/LoadingIndicator';
+import Input from '../../components/Common/Input'
+import Button from '../../components/Common/Button'
+import LoadingIndicator from '../../components/Common/LoadingIndicator'
 
 class Login extends React.PureComponent {
-  render() {
+  render () {
     const {
       authenticated,
       loginFormData,
@@ -26,18 +26,18 @@ class Login extends React.PureComponent {
       formErrors,
       isLoading,
       isSubmitting
-    } = this.props;
+    } = this.props
 
-    if (authenticated) return <Redirect to='/dashboard' />;
+    if (authenticated) return <Redirect to='/dashboard' />
 
     const registerLink = () => {
-      this.props.history.push('/register');
-    };
+      this.props.history.push('/register')
+    }
 
     const handleSubmit = event => {
-      event.preventDefault();
-      login();
-    };
+      event.preventDefault()
+      login()
+    }
 
     return (
       <div className='login-form'>
@@ -53,27 +53,27 @@ class Login extends React.PureComponent {
             >
               <Col xs='12' md='12'>
                 <Input
-                  type={'text'}
-                  error={formErrors['email']}
-                  label={'Your Email'}
-                  name={'email'}
-                  placeholder={'Enter Your Email Address'}
+                  type='text'
+                  error={formErrors.email}
+                  label='Your Email'
+                  name='email'
+                  placeholder='Enter Your Email Address'
                   value={loginFormData.email}
                   onInputChange={(name, value) => {
-                    loginChange(name, value);
+                    loginChange(name, value)
                   }}
                 />
               </Col>
               <Col xs='12' md='12'>
                 <Input
-                  type={'password'}
-                  error={formErrors['password']}
-                  label={'Password'}
-                  name={'password'}
-                  placeholder={'Enter Your Password'}
+                  type='password'
+                  error={formErrors.password}
+                  label='Password'
+                  name='password'
+                  placeholder='Enter Your Password'
                   value={loginFormData.password}
                   onInputChange={(name, value) => {
-                    loginChange(name, value);
+                    loginChange(name, value)
                   }}
                 />
               </Col>
@@ -104,14 +104,14 @@ class Login extends React.PureComponent {
             </div>
             <Link
               className='redirect-link forgot-password-link'
-              to={'/forgot-password'}
+              to='/forgot-password'
             >
               Forgot Your Password?
             </Link>
           </div>
         </form>
       </div>
-    );
+    )
   }
 }
 
@@ -122,7 +122,7 @@ const mapStateToProps = state => {
     formErrors: state.login.formErrors,
     isLoading: state.login.isLoading,
     isSubmitting: state.login.isSubmitting
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, actions)(Login);
+export default connect(mapStateToProps, actions)(Login)

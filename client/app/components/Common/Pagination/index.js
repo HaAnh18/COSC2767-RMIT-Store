@@ -4,15 +4,15 @@
  *
  */
 
-import React from 'react';
-import ReactPaginate from 'react-paginate';
+import React from 'react'
+import ReactPaginate from 'react-paginate'
 
 const Pagination = props => {
-  const { totalPages, onPagination } = props;
+  const { totalPages, onPagination } = props
 
   const handlePageClick = event => {
-    onPagination('pagination', event.selected + 1);
-  };
+    onPagination('pagination', event.selected + 1)
+  }
 
   return (
     <div className='pagination-box'>
@@ -37,7 +37,7 @@ const Pagination = props => {
         renderOnZeroPageCount={null}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination

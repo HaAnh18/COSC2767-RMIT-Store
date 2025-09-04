@@ -1,5 +1,5 @@
-import React from 'react';
-import { Row, Col, Button } from 'reactstrap';
+import React from 'react'
+import { Row, Col, Button } from 'reactstrap'
 
 const CustomContent = () => {
   return (
@@ -19,7 +19,7 @@ const CustomContent = () => {
         </Col>
       </Row>
     </div>
-  );
-};
+  )
+}
 
-export default CustomContent;
+export default CustomContent

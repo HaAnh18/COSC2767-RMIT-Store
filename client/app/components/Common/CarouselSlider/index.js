@@ -4,10 +4,10 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 
 const CarouselSlider = props => {
   const {
@@ -21,7 +21,7 @@ const CarouselSlider = props => {
     ssr,
     responsive,
     children
-  } = props;
+  } = props
 
   return (
     <Carousel
@@ -42,8 +42,8 @@ const CarouselSlider = props => {
     >
       {children}
     </Carousel>
-  );
-};
+  )
+}
 
 CarouselSlider.defaultProps = {
   swipeable: false,
@@ -54,6 +54,6 @@ CarouselSlider.defaultProps = {
   keyBoardControl: true,
   ssr: false,
   autoPlaySpeed: 2000
-};
+}
 
-export default CarouselSlider;
+export default CarouselSlider

@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap'
 
-import Input from '../Input';
-import Button from '../Button';
+import Input from '../Input'
+import Button from '../Button'
 
 const ResetPasswordForm = props => {
   const {
@@ -18,12 +18,12 @@ const ResetPasswordForm = props => {
     isToken,
     resetPasswordChange,
     resetPassword
-  } = props;
+  } = props
 
   const handleSubmit = event => {
-    event.preventDefault();
-    resetPassword();
-  };
+    event.preventDefault()
+    resetPassword()
+  }
 
   return (
     <div className='reset-password-form'>
@@ -31,27 +31,27 @@ const ResetPasswordForm = props => {
         <Row>
           <Col xs='12' lg='6'>
             <Input
-              type={'password'}
-              error={formErrors['password']}
-              label={'Password'}
-              name={'password'}
+              type='password'
+              error={formErrors.password}
+              label='Password'
+              name='password'
               placeholder={isToken ? 'Password' : 'Old Password'}
               value={resetFormData.password}
               onInputChange={(name, value) => {
-                resetPasswordChange(name, value);
+                resetPasswordChange(name, value)
               }}
             />
           </Col>
           <Col xs='12' lg='6'>
             <Input
-              type={'password'}
-              error={formErrors['confirmPassword']}
-              label={'Confirm Password'}
-              name={'confirmPassword'}
-              placeholder={'Confirm Password'}
+              type='password'
+              error={formErrors.confirmPassword}
+              label='Confirm Password'
+              name='confirmPassword'
+              placeholder='Confirm Password'
               value={resetFormData.confirmPassword}
               onInputChange={(name, value) => {
-                resetPasswordChange(name, value);
+                resetPasswordChange(name, value)
               }}
             />
           </Col>
@@ -62,7 +62,7 @@ const ResetPasswordForm = props => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default ResetPasswordForm;
+export default ResetPasswordForm

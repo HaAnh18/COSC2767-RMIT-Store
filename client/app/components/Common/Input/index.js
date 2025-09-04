@@ -4,8 +4,8 @@
  *
  */
 
-import React from 'react';
-import ReactStars from 'react-rating-stars-component';
+import React from 'react'
+import ReactStars from 'react-rating-stars-component'
 
 const Input = props => {
   const {
@@ -24,44 +24,44 @@ const Input = props => {
     name,
     onInputChange,
     inlineElement
-  } = props;
+  } = props
 
   const _onChange = e => {
     if (e.target.name == 'image') {
-      onInputChange(e.target.name, e.target.files[0]);
+      onInputChange(e.target.name, e.target.files[0])
     } else {
-      onInputChange(e.target.name, e.target.value);
+      onInputChange(e.target.name, e.target.value)
     }
-  };
+  }
 
   if (type === 'textarea') {
-    const styles = `input-box${error ? ' invalid' : ''}`;
+    const styles = `input-box${error ? ' invalid' : ''}`
 
     return (
       <div className={styles}>
         {label && <label>{label}</label>}
         <textarea
-          type={'textarea'}
+          type='textarea'
           onChange={e => {
-            _onChange(e);
+            _onChange(e)
           }}
           rows={rows}
           name={name}
           value={value}
           placeholder={placeholder}
-          className={'textarea-text'}
+          className='textarea-text'
         />
         <span className='invalid-message'>{error && error[0]}</span>
       </div>
-    );
+    )
   } else if (type === 'number') {
-    const styles = `input-box${error ? ' invalid' : ''}`;
+    const styles = `input-box${error ? ' invalid' : ''}`
 
     const handleOnInput = e => {
       if (!decimals) {
-        e.target.value = e.target.value.replace(/[^0-9]*/g, '');
+        e.target.value = e.target.value.replace(/[^0-9]*/g, '')
       }
-    };
+    }
     return (
       <div className={styles}>
         {label && <label>{label}</label>}
@@ -74,19 +74,19 @@ const Input = props => {
           onInput={handleOnInput}
           type={type}
           onChange={e => {
-            _onChange(e);
+            _onChange(e)
           }}
           disabled={disabled}
           name={name}
           value={value}
           placeholder={placeholder}
-          className={'input-number'}
+          className='input-number'
         />
         <span className='invalid-message'>{error && error[0]}</span>
       </div>
-    );
+    )
   } else if (type === 'stars') {
-    const styles = `input-box${error ? ' invalid' : ''}`;
+    const styles = `input-box${error ? ' invalid' : ''}`
 
     return (
       <div className={styles}>
@@ -95,36 +95,36 @@ const Input = props => {
           name={name}
           starCount={5}
           size={30}
-          color={'#adb5bd'}
-          activeColor={'#ffb302'}
-          a11y={true}
+          color='#adb5bd'
+          activeColor='#ffb302'
+          a11y
           isHalf={false}
           emptyIcon={<i className='fa fa-star' />}
           halfIcon={<i className='fa fa-star-half-alt' />}
           filledIcon={<i className='fa fa-star' />}
           value={value}
           onChange={value => {
-            onInputChange(name, value);
+            onInputChange(name, value)
           }}
         />
         <span className='invalid-message'>{error && error[0]}</span>
       </div>
-    );
+    )
   } else {
-    const styles = `input-box${inlineElement ? ` inline-btn-box` : ''} ${
+    const styles = `input-box${inlineElement ? ' inline-btn-box' : ''} ${
       error ? 'invalid' : ''
-    }`;
+    }`
 
     return (
       <div className={styles}>
         {label && <label>{label}</label>}
         <div className='input-text-block'>
           <input
-            className={'input-text'}
+            className='input-text'
             autoComplete={autoComplete}
             type={type}
             onChange={e => {
-              _onChange(e);
+              _onChange(e)
             }}
             disabled={disabled}
             name={name}
@@ -135,9 +135,9 @@ const Input = props => {
         </div>
         <span className='invalid-message'>{error && error[0]}</span>
       </div>
-    );
+    )
   }
-};
+}
 
 Input.defaultProps = {
   step: 1,
@@ -145,6 +145,6 @@ Input.defaultProps = {
   rows: '4',
   inlineElement: null,
   autoComplete: 'on'
-};
+}
 
-export default Input;
+export default Input

@@ -4,21 +4,21 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap'
 
-import Checkbox from '../../Common/Checkbox';
-import Input from '../../Common/Input';
-import Button from '../../Common/Button';
+import Checkbox from '../../Common/Checkbox'
+import Input from '../../Common/Input'
+import Button from '../../Common/Button'
 
 const AddAddress = props => {
-  const { addressFormData, formErrors, addressChange, addAddress } = props;
+  const { addressFormData, formErrors, addressChange, addAddress } = props
 
   const handleSubmit = event => {
-    event.preventDefault();
-    addAddress();
-  };
+    event.preventDefault()
+    addAddress()
+  }
 
   return (
     <div className='add-address'>
@@ -26,77 +26,77 @@ const AddAddress = props => {
         <Row>
           <Col xs='12' md='12'>
             <Input
-              type={'text'}
-              error={formErrors['address']}
-              label={'Address'}
-              name={'address'}
-              placeholder={'Address: Street, House No / Apartment No'}
+              type='text'
+              error={formErrors.address}
+              label='Address'
+              name='address'
+              placeholder='Address: Street, House No / Apartment No'
               value={addressFormData.address}
               onInputChange={(name, value) => {
-                addressChange(name, value);
+                addressChange(name, value)
               }}
             />
           </Col>
           <Col xs='12' md='12'>
             <Input
-              type={'text'}
-              error={formErrors['city']}
-              label={'City'}
-              name={'city'}
-              placeholder={'City'}
+              type='text'
+              error={formErrors.city}
+              label='City'
+              name='city'
+              placeholder='City'
               value={addressFormData.city}
               onInputChange={(name, value) => {
-                addressChange(name, value);
+                addressChange(name, value)
               }}
             />
           </Col>
           <Col xs='12' lg='6'>
             <Input
-              type={'text'}
-              error={formErrors['state']}
-              label={'State'}
-              name={'state'}
-              placeholder={'State'}
+              type='text'
+              error={formErrors.state}
+              label='State'
+              name='state'
+              placeholder='State'
               value={addressFormData.state}
               onInputChange={(name, value) => {
-                addressChange(name, value);
+                addressChange(name, value)
               }}
             />
           </Col>
           <Col xs='12' lg='6'>
             <Input
-              type={'text'}
-              error={formErrors['country']}
-              label={'Country'}
-              name={'country'}
-              placeholder={'Please Enter Your country'}
+              type='text'
+              error={formErrors.country}
+              label='Country'
+              name='country'
+              placeholder='Please Enter Your country'
               value={addressFormData.country}
               onInputChange={(name, value) => {
-                addressChange(name, value);
+                addressChange(name, value)
               }}
             />
           </Col>
           <Col xs='12' lg='6'>
             <Input
-              type={'text'}
-              error={formErrors['zipCode']}
-              label={'Zipcode'}
-              name={'zipCode'}
-              placeholder={'Please Enter Your Zipcode'}
+              type='text'
+              error={formErrors.zipCode}
+              label='Zipcode'
+              name='zipCode'
+              placeholder='Please Enter Your Zipcode'
               value={addressFormData.zipCode}
               onInputChange={(name, value) => {
-                addressChange(name, value);
+                addressChange(name, value)
               }}
             />
           </Col>
           <Col xs='12' md='12'>
             <Checkbox
-              id={'default'}
-              label={'As the Default'}
-              name={'isDefault'}
+              id='default'
+              label='As the Default'
+              name='isDefault'
               checked={addressFormData.isDefault}
               onChange={(name, value) => {
-                addressChange(name, value);
+                addressChange(name, value)
               }}
             />
           </Col>
@@ -107,7 +107,7 @@ const AddAddress = props => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default AddAddress;
+export default AddAddress

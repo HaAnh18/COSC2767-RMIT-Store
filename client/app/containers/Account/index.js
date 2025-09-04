@@ -4,25 +4,25 @@
  *
  */
 
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import actions from '../../actions';
+import actions from '../../actions'
 
-import AccountDetails from '../../components/Manager/AccountDetails';
-import SubPage from '../../components/Manager/SubPage';
+import AccountDetails from '../../components/Manager/AccountDetails'
+import SubPage from '../../components/Manager/SubPage'
 
 class Account extends React.PureComponent {
-  componentDidMount() {
+  componentDidMount () {
     // this.props.fetchProfile();
   }
 
-  render() {
-    const { user, accountChange, updateProfile } = this.props;
+  render () {
+    const { user, accountChange, updateProfile } = this.props
 
     return (
       <div className='account'>
-        <SubPage title={'Account Details'} isMenuOpen={null}>
+        <SubPage title='Account Details' isMenuOpen={null}>
           <AccountDetails
             user={user}
             accountChange={accountChange}
@@ -30,7 +30,7 @@ class Account extends React.PureComponent {
           />
         </SubPage>
       </div>
-    );
+    )
   }
 }
 
@@ -39,7 +39,7 @@ const mapStateToProps = state => {
     user: state.account.user,
     resetFormData: state.resetPassword.resetFormData,
     formErrors: state.resetPassword.formErrors
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, actions)(Account);
+export default connect(mapStateToProps, actions)(Account)

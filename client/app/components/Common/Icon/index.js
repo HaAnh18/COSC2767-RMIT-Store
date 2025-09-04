@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
 const BagIcon = () => {
   return (
@@ -20,16 +20,16 @@ const BagIcon = () => {
         <path d='m417.9,104.4h-65.5c-2.2-51-44.8-92.4-96.4-92.4s-94.2,41.3-96.5,92.4h-66.5l-30.1,395.6h386.2l-31.2-395.6zm-161.9-71.6c40.1,0 73.5,32 75.7,71.6h-151.4c2.2-39.6 35.6-71.6 75.7-71.6zm-143.3,92.4h46.7v68.5h20.8v-68.5h151.6v68.5h20.8v-68.5h47.8l27,354h-341.7l27-354z' />
       </g>
     </svg>
-  );
-};
+  )
+}
 
 const BarsIcon = () => {
-  return <span className='bars-icon fa fa-bars' aria-hidden='true' />;
-};
+  return <span className='bars-icon fa fa-bars' aria-hidden='true' />
+}
 
 const CloseIcon = () => {
-  return <span className='close-icon' aria-hidden='true' />;
-};
+  return <span className='close-icon' aria-hidden='true' />
+}
 
 const GoogleIcon = () => {
   return (
@@ -55,8 +55,8 @@ const GoogleIcon = () => {
         d='M272.1 107.7c38.8-.6 76.3 14 104.4 40.8l77.7-77.7C405 24.6 339.7-.8 272.1 0 169.2 0 75.1 58 28.9 150l90.4 70.1c21.5-64.5 81.8-112.4 152.8-112.4z'
       />
     </svg>
-  );
-};
+  )
+}
 
 const FacebookIcon = () => {
   return (
@@ -70,8 +70,8 @@ const FacebookIcon = () => {
     >
       <path d='M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z' />
     </svg>
-  );
-};
+  )
+}
 
 const CheckIcon = ({
   className = '',
@@ -95,8 +95,8 @@ const CheckIcon = ({
       <path d='M22 11.08V12a10 10 0 1 1-5.93-9.14' />
       <polyline points='22 4 12 14.01 9 11.01' />
     </svg>
-  );
-};
+  )
+}
 
 const RefreshIcon = ({ className = '', width = '20', height = '20' }) => {
   return (
@@ -116,8 +116,8 @@ const RefreshIcon = ({ className = '', width = '20', height = '20' }) => {
       <polyline points='1 20 1 14 7 14' />
       <path d='M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15' />
     </svg>
-  );
-};
+  )
+}
 
 const AddressIcon = ({ className = '', width = '20', height = '20' }) => {
   return (
@@ -171,8 +171,8 @@ const AddressIcon = ({ className = '', width = '20', height = '20' }) => {
         />
       </g>
     </svg>
-  );
-};
+  )
+}
 
 const ReviewIcon = ({ className = '', width = '60', height = '60' }) => {
   return (
@@ -228,8 +228,8 @@ const ReviewIcon = ({ className = '', width = '60', height = '60' }) => {
         <path d='m106 91h75v30h-75z' fill='#404b80' />
       </g>
     </svg>
-  );
-};
+  )
+}
 
 const TrashIcon = ({ className = '', width = '20', height = '20' }) => {
   return (
@@ -248,8 +248,8 @@ const TrashIcon = ({ className = '', width = '20', height = '20' }) => {
       <polyline points='3 6 5 6 21 6' />
       <path d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2' />
     </svg>
-  );
-};
+  )
+}
 
 const XIcon = ({ className = '', width = '20', height = '20' }) => {
   return (
@@ -268,8 +268,8 @@ const XIcon = ({ className = '', width = '20', height = '20' }) => {
       <line x1='18' y1='6' x2='6' y2='18' />
       <line x1='6' y1='6' x2='18' y2='18' />
     </svg>
-  );
-};
+  )
+}
 
 const HeartIcon = ({ className = '' }) => {
   return (
@@ -335,8 +335,8 @@ const HeartIcon = ({ className = '' }) => {
         </g>
       </g>
     </svg>
-  );
-};
+  )
+}
 
 const ArrowBackIcon = ({ className = '', width = '20', height = '20' }) => {
   return (
@@ -355,8 +355,8 @@ const ArrowBackIcon = ({ className = '', width = '20', height = '20' }) => {
       <line x1='19' y1='12' x2='5' y2='12' />
       <polyline points='12 19 5 12 12 5' />
     </svg>
-  );
-};
+  )
+}
 
 export {
   BagIcon,
@@ -372,4 +372,4 @@ export {
   HeartIcon,
   XIcon,
   ArrowBackIcon
-};
+}

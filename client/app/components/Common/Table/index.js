@@ -4,20 +4,20 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import BootstrapTable from 'react-bootstrap-table-next';
+import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, {
   CSVExport,
   Search
-} from 'react-bootstrap-table2-toolkit';
+} from 'react-bootstrap-table2-toolkit'
 
 const indication = () => {
-  return 'Oops! No data now! Please try again!';
-};
+  return 'Oops! No data now! Please try again!'
+}
 
-const { ExportCSVButton } = CSVExport;
-const { SearchBar } = Search;
+const { ExportCSVButton } = CSVExport
+const { SearchBar } = Search
 
 const Table = props => {
   const {
@@ -30,13 +30,13 @@ const Table = props => {
     search,
     clickAction,
     isRowEvents
-  } = props;
+  } = props
 
   const rowEvents = {
     onClick: (e, row, rowIndex) => {
-      clickAction(row._id, rowIndex);
+      clickAction(row._id, rowIndex)
     }
-  };
+  }
 
   return (
     <ToolkitProvider
@@ -77,7 +77,7 @@ const Table = props => {
         </div>
       )}
     </ToolkitProvider>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

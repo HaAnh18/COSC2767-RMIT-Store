@@ -4,19 +4,19 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
-import { Container } from 'reactstrap';
+import { Link } from 'react-router-dom'
+import { Container } from 'reactstrap'
 
-import Newsletter from '../../../containers/Newsletter';
+import Newsletter from '../../../containers/Newsletter'
 
 const Footer = () => {
   const infoLinks = [
     { id: 0, name: 'Get in Touch', to: '/contact' },
     { id: 1, name: 'Partner with Us', to: '/sell' },
     { id: 2, name: 'Delivery Info', to: '/shipping' }
-  ];
+  ]
 
   const footerBusinessLinks = (
     <ul className='support-links'>
@@ -27,7 +27,7 @@ const Footer = () => {
         <Link to='/dashboard/orders'>Order History</Link>
       </li>
     </ul>
-  );
+  )
 
   const footerLinks = infoLinks.map(item => (
     <li key={item.id} className='footer-link'>
@@ -35,7 +35,7 @@ const Footer = () => {
         {item.name}
       </Link>
     </li>
-  ));
+  ))
 
   return (
     <footer className='footer'>
@@ -86,7 +86,7 @@ const Footer = () => {
         </ul>
       </Container>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

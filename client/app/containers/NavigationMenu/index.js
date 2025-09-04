@@ -4,24 +4,24 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { Container } from 'reactstrap';
+import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import { Container } from 'reactstrap'
 
-import actions from '../../actions';
+import actions from '../../actions'
 
-import Button from '../../components/Common/Button';
-import { CloseIcon } from '../../components/Common/Icon';
+import Button from '../../components/Common/Button'
+import { CloseIcon } from '../../components/Common/Icon'
 
 class NavigationMenu extends React.PureComponent {
-  render() {
-    const { isMenuOpen, categories, toggleMenu } = this.props;
+  render () {
+    const { isMenuOpen, categories, toggleMenu } = this.props
 
     const handleCategoryClick = () => {
-      this.props.toggleMenu();
-    };
+      this.props.toggleMenu()
+    }
 
     return (
       <div className='navigation-menu'>
@@ -58,7 +58,7 @@ class NavigationMenu extends React.PureComponent {
           </Container>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -66,7 +66,7 @@ const mapStateToProps = state => {
   return {
     isMenuOpen: state.navigation.isMenuOpen,
     categories: state.category.storeCategories
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, actions)(NavigationMenu);
+export default connect(mapStateToProps, actions)(NavigationMenu)

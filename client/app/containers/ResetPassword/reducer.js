@@ -8,7 +8,7 @@ import {
   RESET_PASSWORD_CHANGE,
   RESET_PASSWORD_RESET,
   SET_RESET_PASSWORD_FORM_ERRORS
-} from './constants';
+} from './constants'
 
 const initialState = {
   resetFormData: {
@@ -16,7 +16,7 @@ const initialState = {
     confirmPassword: ''
   },
   formErrors: {}
-};
+}
 
 const resetPasswordReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -24,12 +24,12 @@ const resetPasswordReducer = (state = initialState, action) => {
       return {
         ...state,
         resetFormData: { ...state.resetFormData, ...action.payload }
-      };
+      }
     case SET_RESET_PASSWORD_FORM_ERRORS:
       return {
         ...state,
         formErrors: action.payload
-      };
+      }
     case RESET_PASSWORD_RESET:
       return {
         ...state,
@@ -38,10 +38,10 @@ const resetPasswordReducer = (state = initialState, action) => {
           confirmPassword: ''
         },
         formErrors: {}
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default resetPasswordReducer;
+export default resetPasswordReducer

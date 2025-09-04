@@ -4,25 +4,25 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Switch, Route } from 'react-router-dom';
-import { Row, Col } from 'reactstrap';
+import { Switch, Route } from 'react-router-dom'
+import { Row, Col } from 'reactstrap'
 
-import AccountMenu from '../AccountMenu';
-import Page404 from '../../Common/Page404';
+import AccountMenu from '../AccountMenu'
+import Page404 from '../../Common/Page404'
 
-import Account from '../../../containers/Account';
-import AccountSecurity from '../../../containers/AccountSecurity';
-import Address from '../../../containers/Address';
-import Order from '../../../containers/Order';
-import Users from '../../../containers/Users';
-import Category from '../../../containers/Category';
-import Product from '../../../containers/Product';
-import Brand from '../../../containers/Brand';
-import Merchant from '../../../containers/Merchant';
-import Review from '../../../containers/Review';
-import Wishlist from '../../../containers/WishList';
+import Account from '../../../containers/Account'
+import AccountSecurity from '../../../containers/AccountSecurity'
+import Address from '../../../containers/Address'
+import Order from '../../../containers/Order'
+import Users from '../../../containers/Users'
+import Category from '../../../containers/Category'
+import Product from '../../../containers/Product'
+import Brand from '../../../containers/Brand'
+import Merchant from '../../../containers/Merchant'
+import Review from '../../../containers/Review'
+import Wishlist from '../../../containers/WishList'
 
 const Admin = props => {
   return (
@@ -51,7 +51,7 @@ const Admin = props => {
         </Col>
       </Row>
     </div>
-  );
-};
+  )
+}
 
-export default Admin;
+export default Admin

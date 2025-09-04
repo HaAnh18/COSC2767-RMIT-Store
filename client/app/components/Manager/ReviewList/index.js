@@ -4,37 +4,37 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
-import ReactStars from 'react-rating-stars-component';
+import { Link } from 'react-router-dom'
+import ReactStars from 'react-rating-stars-component'
 
-import { REVIEW_STATUS } from '../../../constants';
-import { formatDate } from '../../../utils/date';
-import { getMemoizedRandomColors } from '../../../utils';
-import Button from '../../Common/Button';
-import { CheckIcon, RefreshIcon, TrashIcon } from '../../Common/Icon';
+import { REVIEW_STATUS } from '../../../constants'
+import { formatDate } from '../../../utils/date'
+import { getMemoizedRandomColors } from '../../../utils'
+import Button from '../../Common/Button'
+import { CheckIcon, RefreshIcon, TrashIcon } from '../../Common/Icon'
 
 const ReviewList = props => {
-  const { reviews, approveReview, rejectReview, deleteReview } = props;
+  const { reviews, approveReview, rejectReview, deleteReview } = props
 
   const getAvatar = review => {
-    const color = getMemoizedRandomColors(review.user._id);
+    const color = getMemoizedRandomColors(review.user._id)
     if (review.user.firstName) {
       return (
         <div
           className='d-flex flex-column justify-content-center align-items-center fw-normal text-white avatar'
-          style={{ backgroundColor: color ? color : 'red' }}
+          style={{ backgroundColor: color || 'red' }}
         >
           {review.user.firstName.charAt(0)}
         </div>
-      );
+      )
     }
-  };
+  }
 
   const getProduct = review => {
     if (review.product) {
-      const product = review.product;
+      const product = review.product
       return (
         <div className='d-flex flex-column justify-content-center align-items-center'>
           <img
@@ -46,9 +46,9 @@ const ReviewList = props => {
             }`}
           />
         </div>
-      );
+      )
     }
-  };
+  }
 
   return (
     <div className='r-list'>
@@ -71,24 +71,26 @@ const ReviewList = props => {
             </div>
             <div className='d-flex flex-column flex-lg-row mx-0 mb-3 align-items-start justify-content-between'>
               <div className='w-100 mb-3 mb-lg-0 review-product-box'>
-                {review.product ? (
-                  <Link
-                    to={`/product/${review.product.slug}`}
-                    className='default-link'
-                  >
-                    {review?.product.name}
-                  </Link>
-                ) : (
-                  <p>Product is not available.</p>
-                )}
+                {review.product
+                  ? (
+                    <Link
+                      to={`/product/${review.product.slug}`}
+                      className='default-link'
+                    >
+                      {review?.product.name}
+                    </Link>
+                    )
+                  : (
+                    <p>Product is not available.</p>
+                    )}
                 <ReactStars
                   classNames='mt-1 mt-lg-2'
                   size={16}
                   edit={false}
-                  color={'#adb5bd'}
-                  activeColor={'#ffb302'}
-                  a11y={true}
-                  isHalf={true}
+                  color='#adb5bd'
+                  activeColor='#ffb302'
+                  a11y
+                  isHalf
                   emptyIcon={<i className='fa fa-star' />}
                   halfIcon={<i className='fa fa-star-half-alt' />}
                   filledIcon={<i className='fa fa-star' />}
@@ -99,35 +101,16 @@ const ReviewList = props => {
             </div>
             <label className='text-black'>{`Review Added on ${formatDate(
               review.created
-            )}`}</label>
+            )}`}
+            </label>
             <hr />
-            {review.status === REVIEW_STATUS.Approved ? (
-              <div className='d-flex flex-column flex-lg-row justify-content-between align-items-lg-center mx-0'>
-                <div className='d-flex flex-row mx-0'>
-                  <CheckIcon className='text-green' />
-                  <p className='ml-2 mb-0'>Approved</p>
-                </div>
-                <Button
-                  className='mt-3 mt-lg-0'
-                  text='Delete'
-                  icon={<TrashIcon width={15} />}
-                  onClick={() => deleteReview(review._id)}
-                />
-              </div>
-            ) : review.status === REVIEW_STATUS.Rejected ? (
-              <>
-                <div className='d-flex align-items-center mb-3'>
-                  <RefreshIcon className='text-primary' />
-                  <p className='fw-medium ml-3 mb-0'>Re Approve Review</p>
-                </div>
+            {review.status === REVIEW_STATUS.Approved
+              ? (
                 <div className='d-flex flex-column flex-lg-row justify-content-between align-items-lg-center mx-0'>
-                  <Button
-                    className='text-uppercase'
-                    variant='primary'
-                    size='md'
-                    text='Approve'
-                    onClick={() => approveReview(review)}
-                  />
+                  <div className='d-flex flex-row mx-0'>
+                    <CheckIcon className='text-green' />
+                    <p className='ml-2 mb-0'>Approved</p>
+                  </div>
                   <Button
                     className='mt-3 mt-lg-0'
                     text='Delete'
@@ -135,38 +118,62 @@ const ReviewList = props => {
                     onClick={() => deleteReview(review._id)}
                   />
                 </div>
-              </>
-            ) : (
-              <div className='d-flex flex-column flex-lg-row justify-content-between align-items-lg-center mx-0'>
-                <div className='d-flex flex-column flex-lg-row mx-0'>
-                  <Button
-                    variant='dark'
-                    className='text-uppercase'
-                    size='md'
-                    text='Approve'
-                    onClick={() => approveReview(review)}
-                  />
-                  <Button
-                    variant='danger'
-                    className='mt-3 mt-lg-0 ml-lg-2 text-uppercase'
-                    size='md'
-                    text='Reject'
-                    onClick={() => rejectReview(review)}
-                  />
-                </div>
-                <Button
-                  className='mt-3 mt-lg-0'
-                  text='Delete'
-                  icon={<TrashIcon width={15} />}
-                  onClick={() => deleteReview(review._id)}
-                />
-              </div>
-            )}
+                )
+              : review.status === REVIEW_STATUS.Rejected
+                ? (
+                  <>
+                    <div className='d-flex align-items-center mb-3'>
+                      <RefreshIcon className='text-primary' />
+                      <p className='fw-medium ml-3 mb-0'>Re Approve Review</p>
+                    </div>
+                    <div className='d-flex flex-column flex-lg-row justify-content-between align-items-lg-center mx-0'>
+                      <Button
+                        className='text-uppercase'
+                        variant='primary'
+                        size='md'
+                        text='Approve'
+                        onClick={() => approveReview(review)}
+                      />
+                      <Button
+                        className='mt-3 mt-lg-0'
+                        text='Delete'
+                        icon={<TrashIcon width={15} />}
+                        onClick={() => deleteReview(review._id)}
+                      />
+                    </div>
+                  </>
+                  )
+                : (
+                  <div className='d-flex flex-column flex-lg-row justify-content-between align-items-lg-center mx-0'>
+                    <div className='d-flex flex-column flex-lg-row mx-0'>
+                      <Button
+                        variant='dark'
+                        className='text-uppercase'
+                        size='md'
+                        text='Approve'
+                        onClick={() => approveReview(review)}
+                      />
+                      <Button
+                        variant='danger'
+                        className='mt-3 mt-lg-0 ml-lg-2 text-uppercase'
+                        size='md'
+                        text='Reject'
+                        onClick={() => rejectReview(review)}
+                      />
+                    </div>
+                    <Button
+                      className='mt-3 mt-lg-0'
+                      text='Delete'
+                      icon={<TrashIcon width={15} />}
+                      onClick={() => deleteReview(review._id)}
+                    />
+                  </div>
+                  )}
           </div>
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ReviewList;
+export default ReviewList

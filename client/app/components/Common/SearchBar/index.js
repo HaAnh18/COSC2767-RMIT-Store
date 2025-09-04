@@ -4,27 +4,27 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import Button from '../Button';
+import Button from '../Button'
 
 class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       value: '',
       typing: false,
       typingTimeout: 0
-    };
+    }
   }
 
-  _onChange(e) {
-    const name = e.target.name;
-    const value = e.target.value;
+  _onChange (e) {
+    const name = e.target.name
+    const value = e.target.value
 
     if (this.state.typingTimeout) {
-      clearTimeout(this.state.typingTimeout);
+      clearTimeout(this.state.typingTimeout)
     }
 
     this.setState({
@@ -32,33 +32,33 @@ class SearchBar extends React.Component {
       typing: false,
       typingTimeout: setTimeout(() => {
         if (this.props.onSearch) {
-          this.props.onSearch({ name, value });
+          this.props.onSearch({ name, value })
         }
       }, 1000)
-    });
+    })
   }
 
-  _handleSubmit(e) {
-    e.preventDefault();
+  _handleSubmit (e) {
+    e.preventDefault()
 
-    const name = this.props.name;
-    const value = this.state.value;
+    const name = this.props.name
+    const value = this.state.value
 
     if (this.props.onSearchSubmit) {
-      this.props.onSearchSubmit({ name, value });
+      this.props.onSearchSubmit({ name, value })
     }
   }
 
-  _onBlur(e) {
-    const name = e.target.name;
-    const value = e.target.value;
+  _onBlur (e) {
+    const name = e.target.name
+    const value = e.target.value
 
     if (this.props.onBlur) {
-      this.props.onBlur({ name, value });
+      this.props.onBlur({ name, value })
     }
   }
 
-  render() {
+  render () {
     const {
       id,
       name,
@@ -67,13 +67,13 @@ class SearchBar extends React.Component {
       inlineBtn,
       btnText,
       autoComplete
-    } = this.props;
-    const { value } = this.state;
+    } = this.props
+    const { value } = this.state
 
-    const styles = `search-box${inlineBtn ? ` inline-btn-box` : ''}`;
+    const styles = `search-box${inlineBtn ? ' inline-btn-box' : ''}`
     const classNames = `input-text search-box${`${
       className && ` ${className}`
-    }`}`;
+    }`}`
 
     return (
       <form onSubmit={e => this._handleSubmit(e)} noValidate>
@@ -88,7 +88,7 @@ class SearchBar extends React.Component {
               placeholder={placeholder}
               value={value}
               onChange={e => {
-                this._onChange(e);
+                this._onChange(e)
               }}
               onBlur={e => this._onBlur(e)}
               onKeyPress={this.props.onKeyPress || null}
@@ -97,7 +97,7 @@ class SearchBar extends React.Component {
           </div>
         </div>
       </form>
-    );
+    )
   }
 }
 
@@ -109,6 +109,6 @@ SearchBar.defaultProps = {
   inlineBtn: true,
   btnText: 'Search',
   autoComplete: 'off'
-};
+}
 
-export default SearchBar;
+export default SearchBar

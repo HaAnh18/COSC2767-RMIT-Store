@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const BrandList = props => {
-  const { brands, user } = props;
+  const { brands, user } = props
 
   return (
     <div className='b-list'>
@@ -34,7 +34,7 @@ const BrandList = props => {
         </Link>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default BrandList;
+export default BrandList

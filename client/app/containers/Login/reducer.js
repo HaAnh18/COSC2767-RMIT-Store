@@ -10,7 +10,7 @@ import {
   SET_LOGIN_LOADING,
   SET_LOGIN_FORM_ERRORS,
   SET_LOGIN_SUBMITTING
-} from './constants';
+} from './constants'
 
 const initialState = {
   loginFormData: {
@@ -20,7 +20,7 @@ const initialState = {
   formErrors: {},
   isSubmitting: false,
   isLoading: false
-};
+}
 
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -28,22 +28,22 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         loginFormData: { ...state.loginFormData, ...action.payload }
-      };
+      }
     case SET_LOGIN_FORM_ERRORS:
       return {
         ...state,
         formErrors: action.payload
-      };
+      }
     case SET_LOGIN_LOADING:
       return {
         ...state,
         isLoading: action.payload
-      };
+      }
     case SET_LOGIN_SUBMITTING:
       return {
         ...state,
         isSubmitting: action.payload
-      };
+      }
     case LOGIN_RESET:
       return {
         ...state,
@@ -53,10 +53,10 @@ const loginReducer = (state = initialState, action) => {
         },
         formErrors: {},
         isLoading: false
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default loginReducer;
+export default loginReducer

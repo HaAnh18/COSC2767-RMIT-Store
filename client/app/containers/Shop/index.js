@@ -4,40 +4,40 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
-import { Row, Col } from 'reactstrap';
+import { connect } from 'react-redux'
+import { Switch, Route } from 'react-router-dom'
+import { Row, Col } from 'reactstrap'
 
-import actions from '../../actions';
-import { sortOptions } from '../../utils/store';
+import actions from '../../actions'
+import { sortOptions } from '../../utils/store'
 
-import ProductsShop from '../ProductsShop';
-import BrandsShop from '../BrandsShop';
-import CategoryShop from '../CategoryShop';
+import ProductsShop from '../ProductsShop'
+import BrandsShop from '../BrandsShop'
+import CategoryShop from '../CategoryShop'
 
-import Page404 from '../../components/Common/Page404';
-import ProductFilter from '../../components/Store/ProductFilter';
-import Pagination from '../../components/Common/Pagination';
-import SelectOption from '../../components/Common/SelectOption';
+import Page404 from '../../components/Common/Page404'
+import ProductFilter from '../../components/Store/ProductFilter'
+import Pagination from '../../components/Common/Pagination'
+import SelectOption from '../../components/Common/SelectOption'
 
 class Shop extends React.PureComponent {
-  componentDidMount() {
-    document.body.classList.add('shop-page');
+  componentDidMount () {
+    document.body.classList.add('shop-page')
   }
 
-  componentWillUnmount() {
-    document.body.classList.remove('shop-page');
+  componentWillUnmount () {
+    document.body.classList.remove('shop-page')
   }
 
-  render() {
-    const { products, advancedFilters, filterProducts } = this.props;
-    const { totalPages, currentPage, count, limit, order } = advancedFilters;
-    const displayPagination = totalPages > 1;
-    const totalProducts = products.length;
-    const left = limit * (currentPage - 1) + 1;
-    const right = totalProducts + left - 1;
+  render () {
+    const { products, advancedFilters, filterProducts } = this.props
+    const { totalPages, currentPage, count, limit, order } = advancedFilters
+    const displayPagination = totalPages > 1
+    const totalProducts = products.length
+    const left = limit * (currentPage - 1) + 1
+    const right = totalProducts + left - 1
 
     return (
       <div className='shop'>
@@ -85,11 +85,11 @@ class Shop extends React.PureComponent {
                 lg={{ size: 4, order: 2 }}
               >
                 <SelectOption
-                  name={'sorting'}
+                  name='sorting'
                   value={{ value: order, label: sortOptions[order].label }}
                   options={sortOptions}
                   handleSelectChange={(n, v) => {
-                    filterProducts('sorting', n.value);
+                    filterProducts('sorting', n.value)
                   }}
                 />
               </Col>
@@ -112,7 +112,7 @@ class Shop extends React.PureComponent {
           </Col>
         </Row>
       </div>
-    );
+    )
   }
 }
 
@@ -120,7 +120,7 @@ const mapStateToProps = state => {
   return {
     advancedFilters: state.product.advancedFilters,
     products: state.product.storeProducts
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, actions)(Shop);
+export default connect(mapStateToProps, actions)(Shop)

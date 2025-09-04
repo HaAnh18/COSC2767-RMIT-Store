@@ -11,7 +11,7 @@ import {
   SEARCH_CHANGE,
   SUGGESTIONS_FETCH_REQUEST,
   SUGGESTIONS_CLEAR_REQUEST
-} from './constants';
+} from './constants'
 
 const initialState = {
   isMenuOpen: false,
@@ -19,7 +19,7 @@ const initialState = {
   isBrandOpen: false,
   searchValue: '',
   searchSuggestions: []
-};
+}
 
 const navigationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -28,36 +28,36 @@ const navigationReducer = (state = initialState, action) => {
         ...state,
         isMenuOpen: !state.isMenuOpen,
         isCartOpen: false
-      };
+      }
     case TOGGLE_CART:
       return {
         ...state,
         isCartOpen: !state.isCartOpen,
         isMenuOpen: false
-      };
+      }
     case TOGGLE_BRAND:
       return {
         ...state,
         isBrandOpen: !state.isBrandOpen
-      };
+      }
     case SEARCH_CHANGE:
       return {
         ...state,
         searchValue: action.payload
-      };
+      }
     case SUGGESTIONS_FETCH_REQUEST:
       return {
         ...state,
         searchSuggestions: action.payload
-      };
+      }
     case SUGGESTIONS_CLEAR_REQUEST:
       return {
         ...state,
         searchSuggestions: action.payload
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default navigationReducer;
+export default navigationReducer

@@ -1,19 +1,19 @@
-import React from 'react';
-import Button from '../../Common/Button';
+import React from 'react'
+import Button from '../../Common/Button'
 
 const UserList = props => {
-  const { users, selectedUser, selectUser } = props;
-  if (!users) return null;
+  const { users, selectedUser, selectUser } = props
+  if (!users) return null
 
   const _selectUser = u => {
-    selectUser(u);
-  };
+    selectUser(u)
+  }
 
   return (
     <ul className='u-list'>
       {users.map((u, i) => {
-        const isSelected = selectedUser?.id === u.id;
-        const isOnline = u.online ? true : false;
+        const isSelected = selectedUser?.id === u.id
+        const isOnline = !!u.online
 
         return (
           <li className={isSelected ? 'selected' : 'not-selected'} key={i}>
@@ -27,14 +27,14 @@ const UserList = props => {
               icon={
                 <span
                   className={`circle ${isOnline ? 'online' : 'offline'}`}
-                ></span>
+                />
               }
             />
           </li>
-        );
+        )
       })}
     </ul>
-  );
+  )
 
   // return (
   //   <>
@@ -73,6 +73,6 @@ const UserList = props => {
   //     </ul>
   //   </>
   // );
-};
+}
 
-export default UserList;
+export default UserList

@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
 const ComingSoon = props => {
   return (
@@ -12,7 +12,7 @@ const ComingSoon = props => {
       <h3>Coming soon</h3>
       {props.children}
     </div>
-  );
-};
+  )
+}
 
-export default ComingSoon;
+export default ComingSoon

@@ -4,33 +4,33 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import actions from '../../actions';
+import actions from '../../actions'
 
-import EditProduct from '../../components/Manager/EditProduct';
-import SubPage from '../../components/Manager/SubPage';
-import NotFound from '../../components/Common/NotFound';
+import EditProduct from '../../components/Manager/EditProduct'
+import SubPage from '../../components/Manager/SubPage'
+import NotFound from '../../components/Common/NotFound'
 
 class Edit extends React.PureComponent {
-  componentDidMount() {
-    this.props.resetProduct();
-    const productId = this.props.match.params.id;
-    this.props.fetchProduct(productId);
-    this.props.fetchBrandsSelect();
+  componentDidMount () {
+    this.props.resetProduct()
+    const productId = this.props.match.params.id
+    this.props.fetchProduct(productId)
+    this.props.fetchBrandsSelect()
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.props.resetProduct();
-      const productId = this.props.match.params.id;
-      this.props.fetchProduct(productId);
+      this.props.resetProduct()
+      const productId = this.props.match.params.id
+      this.props.fetchProduct(productId)
     }
   }
 
-  render() {
+  render () {
     const {
       history,
       user,
@@ -41,7 +41,7 @@ class Edit extends React.PureComponent {
       updateProduct,
       deleteProduct,
       activateProduct
-    } = this.props;
+    } = this.props
 
     return (
       <SubPage
@@ -49,22 +49,24 @@ class Edit extends React.PureComponent {
         actionTitle='Cancel'
         handleAction={history.goBack}
       >
-        {product?._id ? (
-          <EditProduct
-            user={user}
-            product={product}
-            formErrors={formErrors}
-            brands={brands}
-            productChange={productEditChange}
-            updateProduct={updateProduct}
-            deleteProduct={deleteProduct}
-            activateProduct={activateProduct}
-          />
-        ) : (
-          <NotFound message='No product found.' />
-        )}
+        {product?._id
+          ? (
+            <EditProduct
+              user={user}
+              product={product}
+              formErrors={formErrors}
+              brands={brands}
+              productChange={productEditChange}
+              updateProduct={updateProduct}
+              deleteProduct={deleteProduct}
+              activateProduct={activateProduct}
+            />
+            )
+          : (
+            <NotFound message='No product found.' />
+            )}
       </SubPage>
-    );
+    )
   }
 }
 
@@ -74,7 +76,7 @@ const mapStateToProps = state => {
     product: state.product.product,
     formErrors: state.product.editFormErrors,
     brands: state.brand.brandsSelect
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, actions)(Edit);
+export default connect(mapStateToProps, actions)(Edit)

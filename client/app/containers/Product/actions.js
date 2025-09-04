@@ -4,9 +4,9 @@
  *
  */
 
-import { goBack } from 'connected-react-router';
-import { success } from 'react-notification-system-redux';
-import axios from 'axios';
+import { goBack } from 'connected-react-router'
+import { success } from 'react-notification-system-redux'
+import axios from 'axios'
 
 import {
   FETCH_PRODUCTS,
@@ -25,191 +25,191 @@ import {
   SET_PRODUCTS_LOADING,
   SET_ADVANCED_FILTERS,
   RESET_ADVANCED_FILTERS
-} from './constants';
+} from './constants'
 
-import { API_URL, ROLES } from '../../constants';
-import handleError from '../../utils/error';
-import { formatSelectOptions, unformatSelectOptions } from '../../utils/select';
-import { allFieldsValidation } from '../../utils/validation';
+import { API_URL, ROLES } from '../../constants'
+import handleError from '../../utils/error'
+import { formatSelectOptions, unformatSelectOptions } from '../../utils/select'
+import { allFieldsValidation } from '../../utils/validation'
 
 export const productChange = (name, value) => {
-  let formData = {};
-  formData[name] = value;
+  const formData = {}
+  formData[name] = value
   return {
     type: PRODUCT_CHANGE,
     payload: formData
-  };
-};
+  }
+}
 
 export const productEditChange = (name, value) => {
-  let formData = {};
-  formData[name] = value;
+  const formData = {}
+  formData[name] = value
 
   return {
     type: PRODUCT_EDIT_CHANGE,
     payload: formData
-  };
-};
+  }
+}
 
 export const productShopChange = (name, value) => {
-  let formData = {};
-  formData[name] = value;
+  const formData = {}
+  formData[name] = value
 
   return {
     type: PRODUCT_SHOP_CHANGE,
     payload: formData
-  };
-};
+  }
+}
 
 export const resetProduct = () => {
   return async (dispatch, getState) => {
-    dispatch({ type: RESET_PRODUCT });
-  };
-};
+    dispatch({ type: RESET_PRODUCT })
+  }
+}
 
 export const setProductLoading = value => {
   return {
     type: SET_PRODUCTS_LOADING,
     payload: value
-  };
-};
+  }
+}
 
 export const filterProducts2 = (n, v) => {
   return async (dispatch, getState) => {
-    const advancedFilters = getState().product.advancedFilters;
-    const payload = productsFilterOrganizer(n, v, advancedFilters);
+    const advancedFilters = getState().product.advancedFilters
+    const payload = productsFilterOrganizer(n, v, advancedFilters)
 
-    dispatch({ type: SET_ADVANCED_FILTERS, payload });
-  };
-};
+    dispatch({ type: SET_ADVANCED_FILTERS, payload })
+  }
+}
 
 // fetch/filter store products api
 export const filterProducts = (n, v) => {
   return async (dispatch, getState) => {
     try {
-      dispatch(setProductLoading(true));
-      const advancedFilters = getState().product.advancedFilters;
-      const payload = productsFilterOrganizer(n, v, advancedFilters);
+      dispatch(setProductLoading(true))
+      const advancedFilters = getState().product.advancedFilters
+      const payload = productsFilterOrganizer(n, v, advancedFilters)
 
-      dispatch({ type: SET_ADVANCED_FILTERS, payload });
-      const sortOrder = getSortOrder(payload.order);
+      dispatch({ type: SET_ADVANCED_FILTERS, payload })
+      const sortOrder = getSortOrder(payload.order)
       const response = await axios.get(`${API_URL}/product/list`, {
         params: { ...payload, sortOrder }
-      });
-      const { products, totalPages, currentPage, count } = response.data;
+      })
+      const { products, totalPages, currentPage, count } = response.data
 
       dispatch({
         type: FETCH_STORE_PRODUCTS,
         payload: products
-      });
+      })
 
       const newPayload = {
         ...payload,
         totalPages,
         currentPage,
         count
-      };
+      }
       dispatch({
         type: SET_ADVANCED_FILTERS,
         payload: newPayload
-      });
+      })
     } catch (error) {
-      handleError(error, dispatch);
+      handleError(error, dispatch)
     } finally {
-      dispatch(setProductLoading(false));
+      dispatch(setProductLoading(false))
     }
-  };
-};
+  }
+}
 
 // fetch store product api
 export const fetchStoreProduct = slug => {
   return async (dispatch, getState) => {
-    dispatch(setProductLoading(true));
+    dispatch(setProductLoading(true))
 
     try {
-      const response = await axios.get(`${API_URL}/product/item/${slug}`);
+      const response = await axios.get(`${API_URL}/product/item/${slug}`)
 
-      const inventory = response.data.product.quantity;
-      const product = { ...response.data.product, inventory };
+      const inventory = response.data.product.quantity
+      const product = { ...response.data.product, inventory }
 
       dispatch({
         type: FETCH_STORE_PRODUCT,
         payload: product
-      });
+      })
     } catch (error) {
-      handleError(error, dispatch);
+      handleError(error, dispatch)
     } finally {
-      dispatch(setProductLoading(false));
+      dispatch(setProductLoading(false))
     }
-  };
-};
+  }
+}
 
 export const fetchProductsSelect = () => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.get(`${API_URL}/product/list/select`);
+      const response = await axios.get(`${API_URL}/product/list/select`)
 
-      const formattedProducts = formatSelectOptions(response.data.products);
+      const formattedProducts = formatSelectOptions(response.data.products)
 
       dispatch({
         type: FETCH_PRODUCTS_SELECT,
         payload: formattedProducts
-      });
+      })
     } catch (error) {
-      handleError(error, dispatch);
+      handleError(error, dispatch)
     }
-  };
-};
+  }
+}
 
 // fetch products api
 export const fetchProducts = () => {
   return async (dispatch, getState) => {
     try {
-      dispatch(setProductLoading(true));
+      dispatch(setProductLoading(true))
 
-      const response = await axios.get(`${API_URL}/product`);
+      const response = await axios.get(`${API_URL}/product`)
 
       dispatch({
         type: FETCH_PRODUCTS,
         payload: response.data.products
-      });
+      })
     } catch (error) {
-      handleError(error, dispatch);
+      handleError(error, dispatch)
     } finally {
-      dispatch(setProductLoading(false));
+      dispatch(setProductLoading(false))
     }
-  };
-};
+  }
+}
 
 // fetch product api
 export const fetchProduct = id => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.get(`${API_URL}/product/${id}`);
+      const response = await axios.get(`${API_URL}/product/${id}`)
 
-      const inventory = response.data.product.quantity;
+      const inventory = response.data.product.quantity
 
-      const brand = response.data.product.brand;
-      const isBrand = brand ? true : false;
+      const brand = response.data.product.brand
+      const isBrand = !!brand
       const brandData = formatSelectOptions(
         isBrand && [brand],
         !isBrand,
         'fetchProduct'
-      );
+      )
 
-      response.data.product.brand = brandData[0];
+      response.data.product.brand = brandData[0]
 
-      const product = { ...response.data.product, inventory };
+      const product = { ...response.data.product, inventory }
 
       dispatch({
         type: FETCH_PRODUCT,
         payload: product
-      });
+      })
     } catch (error) {
-      handleError(error, dispatch);
+      handleError(error, dispatch)
     }
-  };
-};
+  }
+}
 
 // add product api
 export const addProduct = () => {
@@ -224,13 +224,13 @@ export const addProduct = () => {
         taxable: 'required',
         image: 'required',
         brand: 'required'
-      };
+      }
 
-      const product = getState().product.productFormData;
-      const user = getState().account.user;
-      const brands = getState().brand.brandsSelect;
+      const product = getState().product.productFormData
+      const user = getState().account.user
+      const brands = getState().brand.brandsSelect
 
-      const brand = unformatSelectOptions([product.brand]);
+      const brand = unformatSelectOptions([product.brand])
 
       const newProduct = {
         sku: product.sku,
@@ -247,7 +247,7 @@ export const addProduct = () => {
               ? brand
               : null
             : brands[1].value
-      };
+      }
 
       const { isValid, errors } = allFieldsValidation(newProduct, rules, {
         'required.sku': 'Sku is required.',
@@ -262,19 +262,19 @@ export const addProduct = () => {
         'required.taxable': 'Taxable is required.',
         'required.image': 'Please upload files with jpg, jpeg, png format.',
         'required.brand': 'Brand is required.'
-      });
+      })
 
       if (!isValid) {
-        return dispatch({ type: SET_PRODUCT_FORM_ERRORS, payload: errors });
+        return dispatch({ type: SET_PRODUCT_FORM_ERRORS, payload: errors })
       }
-      const formData = new FormData();
+      const formData = new FormData()
       if (newProduct.image) {
         for (const key in newProduct) {
           if (newProduct.hasOwnProperty(key)) {
             if (key === 'brand' && newProduct[key] === null) {
-              continue;
+              continue
             } else {
-              formData.set(key, newProduct[key]);
+              formData.set(key, newProduct[key])
             }
           }
         }
@@ -282,28 +282,28 @@ export const addProduct = () => {
 
       const response = await axios.post(`${API_URL}/product/add`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
-      });
+      })
 
       const successfulOptions = {
         title: `${response.data.message}`,
         position: 'tr',
         autoDismiss: 1
-      };
+      }
 
       if (response.data.success === true) {
-        dispatch(success(successfulOptions));
+        dispatch(success(successfulOptions))
         dispatch({
           type: ADD_PRODUCT,
           payload: response.data.product
-        });
-        dispatch(resetProduct());
-        dispatch(goBack());
+        })
+        dispatch(resetProduct())
+        dispatch(goBack())
       }
     } catch (error) {
-      handleError(error, dispatch);
+      handleError(error, dispatch)
     }
-  };
-};
+  }
+}
 
 // update Product api
 export const updateProduct = () => {
@@ -318,11 +318,11 @@ export const updateProduct = () => {
         price: 'required|numeric',
         taxable: 'required',
         brand: 'required'
-      };
+      }
 
-      const product = getState().product.product;
+      const product = getState().product.product
 
-      const brand = unformatSelectOptions([product.brand]);
+      const brand = unformatSelectOptions([product.brand])
 
       const newProduct = {
         name: product.name,
@@ -333,7 +333,7 @@ export const updateProduct = () => {
         price: product.price,
         taxable: product.taxable,
         brand: brand != 0 ? brand : null
-      };
+      }
 
       const { isValid, errors } = allFieldsValidation(newProduct, rules, {
         'required.name': 'Name is required.',
@@ -350,35 +350,35 @@ export const updateProduct = () => {
         'required.price': 'Price is required.',
         'required.taxable': 'Taxable is required.',
         'required.brand': 'Brand is required.'
-      });
+      })
 
       if (!isValid) {
         return dispatch({
           type: SET_PRODUCT_FORM_EDIT_ERRORS,
           payload: errors
-        });
+        })
       }
 
       const response = await axios.put(`${API_URL}/product/${product._id}`, {
         product: newProduct
-      });
+      })
 
       const successfulOptions = {
         title: `${response.data.message}`,
         position: 'tr',
         autoDismiss: 1
-      };
+      }
 
       if (response.data.success === true) {
-        dispatch(success(successfulOptions));
+        dispatch(success(successfulOptions))
 
-        //dispatch(goBack());
+        // dispatch(goBack());
       }
     } catch (error) {
-      handleError(error, dispatch);
+      handleError(error, dispatch)
     }
-  };
-};
+  }
+}
 
 // activate product api
 export const activateProduct = (id, value) => {
@@ -388,48 +388,48 @@ export const activateProduct = (id, value) => {
         product: {
           isActive: value
         }
-      });
+      })
 
       const successfulOptions = {
         title: `${response.data.message}`,
         position: 'tr',
         autoDismiss: 1
-      };
+      }
 
       if (response.data.success === true) {
-        dispatch(success(successfulOptions));
+        dispatch(success(successfulOptions))
       }
     } catch (error) {
-      handleError(error, dispatch);
+      handleError(error, dispatch)
     }
-  };
-};
+  }
+}
 
 // delete product api
 export const deleteProduct = id => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.delete(`${API_URL}/product/delete/${id}`);
+      const response = await axios.delete(`${API_URL}/product/delete/${id}`)
 
       const successfulOptions = {
         title: `${response.data.message}`,
         position: 'tr',
         autoDismiss: 1
-      };
+      }
 
       if (response.data.success === true) {
-        dispatch(success(successfulOptions));
+        dispatch(success(successfulOptions))
         dispatch({
           type: REMOVE_PRODUCT,
           payload: id
-        });
-        dispatch(goBack());
+        })
+        dispatch(goBack())
       }
     } catch (error) {
-      handleError(error, dispatch);
+      handleError(error, dispatch)
     }
-  };
-};
+  }
+}
 
 const productsFilterOrganizer = (n, v, s) => {
   switch (n) {
@@ -444,7 +444,7 @@ const productsFilterOrganizer = (n, v, s) => {
         order: s.order,
         page: s.currentPage,
         limit: s.limit
-      };
+      }
     case 'brand':
       return {
         name: s.name,
@@ -456,7 +456,7 @@ const productsFilterOrganizer = (n, v, s) => {
         order: s.order,
         page: s.currentPage,
         limit: s.limit
-      };
+      }
     case 'sorting':
       return {
         name: s.name,
@@ -468,7 +468,7 @@ const productsFilterOrganizer = (n, v, s) => {
         order: v,
         page: s.currentPage,
         limit: s.limit
-      };
+      }
     case 'price':
       return {
         name: s.name,
@@ -480,7 +480,7 @@ const productsFilterOrganizer = (n, v, s) => {
         order: s.order,
         page: s.currentPage,
         limit: s.limit
-      };
+      }
     case 'rating':
       return {
         name: s.name,
@@ -492,7 +492,7 @@ const productsFilterOrganizer = (n, v, s) => {
         order: s.order,
         page: s.currentPage,
         limit: s.limit
-      };
+      }
     case 'pagination':
       return {
         name: s.name,
@@ -504,7 +504,7 @@ const productsFilterOrganizer = (n, v, s) => {
         order: s.order,
         page: v ?? s.currentPage,
         limit: s.limit
-      };
+      }
     default:
       return {
         name: s.name,
@@ -516,26 +516,26 @@ const productsFilterOrganizer = (n, v, s) => {
         order: s.order,
         page: s.currentPage,
         limit: s.limit
-      };
+      }
   }
-};
+}
 
 const getSortOrder = value => {
-  let sortOrder = {};
+  const sortOrder = {}
   switch (value) {
     case 0:
-      sortOrder._id = -1;
-      break;
+      sortOrder._id = -1
+      break
     case 1:
-      sortOrder.price = -1;
-      break;
+      sortOrder.price = -1
+      break
     case 2:
-      sortOrder.price = 1;
-      break;
+      sortOrder.price = 1
+      break
 
     default:
-      break;
+      break
   }
 
-  return sortOrder;
-};
+  return sortOrder
+}

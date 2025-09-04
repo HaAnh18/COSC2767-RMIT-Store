@@ -4,37 +4,37 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
 class Radio extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       size: ''
-    };
+    }
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(event) {
+  handleChange (event) {
     this.setState({
       size: event.target.value
-    });
-    this.props.handleChangeSubmit(event.target.name,event.target.value);
+    })
+    this.props.handleChangeSubmit(event.target.name, event.target.value)
   }
 
-  render() {
+  render () {
     return (
       <div>
         <ul>
           <li>
             <label>
               <input
-                name="sorting"
-                type="radio"
-                value="Newest First"
-                checked={this.state.size === "Newest First"}
+                name='sorting'
+                type='radio'
+                value='Newest First'
+                checked={this.state.size === 'Newest First'}
                 onChange={this.handleChange}
               />
               Newest First
@@ -44,10 +44,10 @@ class Radio extends React.Component {
           <li>
             <label>
               <input
-                name="sorting"
-                type="radio"
-                value="Price High to Low"
-                checked={this.state.size === "Price High to Low"}
+                name='sorting'
+                type='radio'
+                value='Price High to Low'
+                checked={this.state.size === 'Price High to Low'}
                 onChange={this.handleChange}
               />
               Price High to Low
@@ -57,10 +57,10 @@ class Radio extends React.Component {
           <li>
             <label>
               <input
-                name="sorting"
-                type="radio"
-                value="Price Low to High"
-                checked={this.state.size === "Price Low to High"}
+                name='sorting'
+                type='radio'
+                value='Price Low to High'
+                checked={this.state.size === 'Price Low to High'}
                 onChange={this.handleChange}
               />
               Price Low to High
@@ -68,8 +68,8 @@ class Radio extends React.Component {
           </li>
         </ul>
       </div>
-    );
+    )
   }
 }
 
-export default Radio;
+export default Radio

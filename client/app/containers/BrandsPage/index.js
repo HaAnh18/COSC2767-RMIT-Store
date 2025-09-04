@@ -4,34 +4,34 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import actions from '../../actions';
+import actions from '../../actions'
 
-import BrandList from '../../components/Store/BrandList';
+import BrandList from '../../components/Store/BrandList'
 
 class BrandsPage extends React.PureComponent {
-  componentDidMount() {
-    this.props.fetchStoreBrands();
+  componentDidMount () {
+    this.props.fetchStoreBrands()
   }
 
-  render() {
-    const { brands } = this.props;
+  render () {
+    const { brands } = this.props
 
     return (
       <div className='brands-page'>
         <BrandList brands={brands} />
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     brands: state.brand.storeBrands
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, actions)(BrandsPage);
+export default connect(mapStateToProps, actions)(BrandsPage)

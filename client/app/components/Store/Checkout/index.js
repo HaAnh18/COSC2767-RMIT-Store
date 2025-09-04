@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import Button from '../../Common/Button';
+import Button from '../../Common/Button'
 
 const Checkout = props => {
-  const { authenticated, handleShopping, handleCheckout, placeOrder } = props;
+  const { authenticated, handleShopping, handleCheckout, placeOrder } = props
 
   return (
     <div className='easy-checkout'>
@@ -19,22 +19,24 @@ const Checkout = props => {
           text='Continue shopping'
           onClick={() => handleShopping()}
         />
-        {authenticated ? (
-          <Button
-            variant='primary'
-            text='Place Order'
-            onClick={() => placeOrder()}
-          />
-        ) : (
-          <Button
-            variant='primary'
-            text='Proceed To Checkout'
-            onClick={() => handleCheckout()}
-          />
-        )}
+        {authenticated
+          ? (
+            <Button
+              variant='primary'
+              text='Place Order'
+              onClick={() => placeOrder()}
+            />
+            )
+          : (
+            <Button
+              variant='primary'
+              text='Proceed To Checkout'
+              onClick={() => handleCheckout()}
+            />
+            )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Checkout;
+export default Checkout

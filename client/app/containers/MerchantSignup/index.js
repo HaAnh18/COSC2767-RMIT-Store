@@ -4,35 +4,35 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { connect } from 'react-redux';
-import { Row, Col } from 'reactstrap';
+import { connect } from 'react-redux'
+import { Row, Col } from 'reactstrap'
 
-import actions from '../../actions';
-import Input from '../../components/Common/Input';
-import Button from '../../components/Common/Button';
+import actions from '../../actions'
+import Input from '../../components/Common/Input'
+import Button from '../../components/Common/Button'
 
 class MerchantSignup extends React.PureComponent {
-  componentDidMount() {
-    const email = this.props.location.search.split('=')[1];
-    this.props.merchantSignupChange('email', email);
+  componentDidMount () {
+    const email = this.props.location.search.split('=')[1]
+    this.props.merchantSignupChange('email', email)
   }
 
-  render() {
+  render () {
     const {
       signupFormData,
       formErrors,
       merchantSignupChange,
       merchantSignUp
-    } = this.props;
+    } = this.props
 
     const handleSubmit = event => {
-      const token = this.props.match.params.token;
-      event.preventDefault();
+      const token = this.props.match.params.token
+      event.preventDefault()
 
-      merchantSignUp(token);
-    };
+      merchantSignUp(token)
+    }
 
     return (
       <div className='merchant-signup-form'>
@@ -46,53 +46,53 @@ class MerchantSignup extends React.PureComponent {
 
               <Col xs='12' md='12'>
                 <Input
-                  type={'text'}
-                  error={formErrors['email']}
-                  label={'Your Email'}
-                  name={'email'}
-                  placeholder={'Enter Your Email Address'}
+                  type='text'
+                  error={formErrors.email}
+                  label='Your Email'
+                  name='email'
+                  placeholder='Enter Your Email Address'
                   value={signupFormData.email}
                   onInputChange={(name, value) => {
-                    merchantSignupChange(name, value);
+                    merchantSignupChange(name, value)
                   }}
                 />
               </Col>
               <Col xs='12' md='12'>
                 <Input
-                  type={'text'}
-                  error={formErrors['firstName']}
-                  label={'First Name'}
-                  name={'firstName'}
-                  placeholder={'Enter Your First Name'}
+                  type='text'
+                  error={formErrors.firstName}
+                  label='First Name'
+                  name='firstName'
+                  placeholder='Enter Your First Name'
                   value={signupFormData.firstName}
                   onInputChange={(name, value) => {
-                    merchantSignupChange(name, value);
+                    merchantSignupChange(name, value)
                   }}
                 />
               </Col>
               <Col xs='12' md='12'>
                 <Input
-                  type={'text'}
-                  error={formErrors['lastName']}
-                  label={'Last Name'}
-                  name={'lastName'}
-                  placeholder={'Enter Your Last Name'}
+                  type='text'
+                  error={formErrors.lastName}
+                  label='Last Name'
+                  name='lastName'
+                  placeholder='Enter Your Last Name'
                   value={signupFormData.lastName}
                   onInputChange={(name, value) => {
-                    merchantSignupChange(name, value);
+                    merchantSignupChange(name, value)
                   }}
                 />
               </Col>
               <Col xs='12' md='12'>
                 <Input
-                  type={'password'}
-                  label={'Create Password'}
-                  error={formErrors['password']}
-                  name={'password'}
-                  placeholder={'Choose a Password'}
+                  type='password'
+                  label='Create Password'
+                  error={formErrors.password}
+                  name='password'
+                  placeholder='Choose a Password'
                   value={signupFormData.password}
                   onInputChange={(name, value) => {
-                    merchantSignupChange(name, value);
+                    merchantSignupChange(name, value)
                   }}
                 />
               </Col>
@@ -108,7 +108,7 @@ class MerchantSignup extends React.PureComponent {
           </Row>
         </form>
       </div>
-    );
+    )
   }
 }
 
@@ -116,7 +116,7 @@ const mapStateToProps = state => {
   return {
     signupFormData: state.merchant.signupFormData,
     formErrors: state.merchant.signupFormErrors
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, actions)(MerchantSignup);
+export default connect(mapStateToProps, actions)(MerchantSignup)

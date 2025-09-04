@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const ProductList = props => {
-  const { products } = props;
+  const { products } = props
 
   return (
     <div className='p-list'>
@@ -34,7 +34,7 @@ const ProductList = props => {
         </Link>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ProductList;
+export default ProductList

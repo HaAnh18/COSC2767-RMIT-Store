@@ -1,12 +1,12 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpackMerge = require('webpack-merge');
-const Dotenv = require('dotenv-webpack');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpackMerge = require('webpack-merge')
+const Dotenv = require('dotenv-webpack')
 
 // Import common configuration
-const common = require('./webpack.common');
+const common = require('./webpack.common')
 
-const CURRENT_WORKING_DIR = process.cwd();
+const CURRENT_WORKING_DIR = process.cwd()
 
 const config = {
   // Set mode to development for better debugging and build speed
@@ -88,7 +88,7 @@ const config = {
   },
   // Enable source maps for easier debugging
   devtool: 'eval-source-map'
-};
+}
 
 // Merge common configuration with development-specific configuration
-module.exports = webpackMerge(common, config);
+module.exports = webpackMerge(common, config)

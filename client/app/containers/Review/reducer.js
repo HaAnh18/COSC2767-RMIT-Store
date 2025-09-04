@@ -14,7 +14,7 @@ import {
   RESET_REVIEW,
   SET_REVIEW_FORM_ERRORS,
   SET_ADVANCED_FILTERS
-} from './constants';
+} from './constants'
 
 const initialState = {
   reviews: [],
@@ -41,7 +41,7 @@ const initialState = {
     }
   },
   reviewFormErrors: {}
-};
+}
 
 const reviewReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -49,7 +49,7 @@ const reviewReducer = (state = initialState, action) => {
       return {
         ...state,
         reviews: action.payload
-      };
+      }
     case SET_ADVANCED_FILTERS:
       return {
         ...state,
@@ -57,27 +57,27 @@ const reviewReducer = (state = initialState, action) => {
           ...state.advancedFilters,
           ...action.payload
         }
-      };
+      }
     case FETCH_PRODUCT_REVIEWS:
       return {
         ...state,
         productReviews: action.payload.reviews,
         reviewsSummary: action.payload.reviewsSummary
-      };
+      }
     case ADD_REVIEW:
       return {
         ...state,
         productReviews: [...state.productReviews, action.payload]
-      };
+      }
     case REMOVE_REVIEW:
-      const index = state.reviews.findIndex(r => r._id === action.payload);
+      const index = state.reviews.findIndex(r => r._id === action.payload)
       return {
         ...state,
         reviews: [
           ...state.reviews.slice(0, index),
           ...state.reviews.slice(index + 1)
         ]
-      };
+      }
     case REVIEW_CHANGE:
       return {
         ...state,
@@ -85,12 +85,12 @@ const reviewReducer = (state = initialState, action) => {
           ...state.reviewFormData,
           ...action.payload
         }
-      };
+      }
     case SET_REVIEWS_LOADING:
       return {
         ...state,
         isLoading: action.payload
-      };
+      }
     case RESET_REVIEW:
       return {
         ...state,
@@ -104,16 +104,16 @@ const reviewReducer = (state = initialState, action) => {
           }
         },
         reviewFormErrors: {}
-      };
+      }
     case SET_REVIEW_FORM_ERRORS:
       return {
         ...state,
         reviewFormErrors: action.payload
-      };
+      }
 
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default reviewReducer;
+export default reviewReducer

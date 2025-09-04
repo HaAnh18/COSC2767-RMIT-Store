@@ -4,27 +4,27 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap'
 
-import { CART_ITEM_STATUS } from '../../../constants';
-import { formatDate } from '../../../utils/date';
-import Button from '../../Common/Button';
-import { ArrowBackIcon } from '../../Common/Icon';
+import { CART_ITEM_STATUS } from '../../../constants'
+import { formatDate } from '../../../utils/date'
+import Button from '../../Common/Button'
+import { ArrowBackIcon } from '../../Common/Icon'
 
 const OrderMeta = props => {
-  const { order, cancelOrder, onBack } = props;
+  const { order, cancelOrder, onBack } = props
 
   const renderMetaAction = () => {
     const isNotDelivered =
       order.products.filter(i => i.status === CART_ITEM_STATUS.Delivered)
-        .length < 1;
+        .length < 1
 
     if (isNotDelivered) {
-      return <Button size='sm' text='Cancel Order' onClick={cancelOrder} />;
+      return <Button size='sm' text='Cancel Order' onClick={cancelOrder} />
     }
-  };
+  }
 
   return (
     <div className='order-meta'>
@@ -36,7 +36,7 @@ const OrderMeta = props => {
           size='sm'
           text='Back to orders'
           onClick={onBack}
-        ></Button>
+        />
       </div>
 
       <Row>
@@ -56,7 +56,8 @@ const OrderMeta = props => {
             <Col xs='8'>
               <span className='order-label one-line-ellipsis'>{` ${formatDate(
                 order.created
-              )}`}</span>
+              )}`}
+              </span>
             </Col>
           </Row>
         </Col>
@@ -65,7 +66,7 @@ const OrderMeta = props => {
         </Col>
       </Row>
     </div>
-  );
-};
+  )
+}
 
-export default OrderMeta;
+export default OrderMeta

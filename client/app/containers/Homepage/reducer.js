@@ -4,18 +4,18 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { DEFAULT_ACTION } from './constants'
 
-const initialState = {};
+const initialState = {}
 
 const homepageReducer = (state = initialState, action) => {
-  let newState;
+  let newState
   switch (action.type) {
     case DEFAULT_ACTION:
-      return newState;
+      return newState
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default homepageReducer;
+export default homepageReducer

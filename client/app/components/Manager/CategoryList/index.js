@@ -4,12 +4,12 @@
  *
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const CategoryList = props => {
-  const { categories } = props;
+  const { categories } = props
 
   return (
     <div className='c-list'>
@@ -26,7 +26,7 @@ const CategoryList = props => {
         </Link>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default CategoryList;
+export default CategoryList
