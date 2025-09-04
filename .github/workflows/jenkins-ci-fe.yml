@@ -34,7 +34,7 @@ jobs:
       - name: Run the application
         run: |
           cd client
-          docker-compose -f docker-compose.yml up -d --build
+          docker compose up -d --build
 
       - name: Wait for app to start
         uses: jakejarvis/wait-action@v0.1.1
